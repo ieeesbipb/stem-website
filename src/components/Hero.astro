@@ -1,0 +1,594 @@
+---
+---
+
+<div class="hero-overview-wrapper">
+	<!-- Left Column: Normal Flow with Two Full-Height Screens -->
+	<div class="hero-left">
+		<!-- Screen 1: Hero Title Screen -->
+		<section class="screen-pane hero-pane" id="hero">
+			<div class="hero-content">
+				<div class="title-group">
+					<h1 class="title-stem">STEM</h1>
+					<div class="title-year">2026</div>
+				</div>
+
+				<div class="meta-group">
+					<p class="event-date">Date: TBA</p>
+					<p class="target-audience">For high school students (SMA/SMK)</p>
+				</div>
+
+				<div class="cta-wrapper">
+					<a href="#register" class="hero-btn" id="hero-register-btn">
+						<span class="btn-text">Register Now</span>
+						<span class="btn-icon" aria-hidden="true">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square">
+								<path d="M7 17L17 7" />
+								<path d="M7 7h10v10" />
+							</svg>
+						</span>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Screen 2: Overview Details Screen -->
+		<section class="screen-pane overview-pane" id="overview">
+			<div class="overview-content">
+				<p class="overview-lead">
+					STEM 2026 is a flagship program of IEEE Student Branch IPB University, built to foster knowledge and technological engineering for real-world applications.
+				</p>
+
+				<p class="overview-theme">
+					This year's theme, From Reactive to Proactive, explores how IoT can help Indonesia prepare for natural disasters before they happen.
+				</p>
+
+				<hr class="overview-divider" />
+
+				<ul class="timeline-list">
+					<li>Registration opens: TBA</li>
+					<li>Registration closes: TBA</li>
+					<li>Main event: TBA</li>
+				</ul>
+
+				<div class="overview-actions">
+					<a href="#guidebook" class="guidebook-btn" id="download-guidebook-btn">
+						Download Guidebook
+					</a>
+
+					<a href="#register" class="hero-btn" id="overview-register-btn">
+						<span class="btn-text">Register Now</span>
+						<span class="btn-icon" aria-hidden="true">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square">
+								<path d="M7 17L17 7" />
+								<path d="M7 7h10v10" />
+							</svg>
+						</span>
+					</a>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<!-- Right Column: Sticky Blueprint Grid & 3D Isometric Keycaps + Mascot -->
+	<div class="hero-right">
+		<!-- Corner Icons -->
+		<div class="corner-icon corner-top-left" title="STEM Alert">
+			<img
+				src="/Warning Triangle Icon (Top Left Corner).png"
+				alt="Warning Triangle Icon"
+				width="64"
+				height="64"
+				loading="eager"
+			/>
+		</div>
+
+		<div class="corner-icon corner-top-right" title="Drone Tech">
+			<img
+				src="/Drone Icon (Top Right Corner).png"
+				alt="Drone Network Icon"
+				width="64"
+				height="64"
+				loading="eager"
+			/>
+		</div>
+
+		<div class="corner-icon corner-bottom-left" title="Hardware Computing">
+			<img
+				src="/Microchip Icon (Bottom Left Corner).png"
+				alt="Microchip Icon"
+				width="64"
+				height="64"
+				loading="eager"
+			/>
+		</div>
+
+		<div class="corner-icon corner-bottom-right" title="Wireless Network">
+			<img
+				src="/Signal Icon (Bottom Right Corner).png"
+				alt="Signal Wave Icon"
+				width="64"
+				height="64"
+				loading="eager"
+			/>
+		</div>
+
+		<!-- Central Stage with Keycaps and Mascot -->
+		<div class="stage-container">
+			<div class="visual-stage">
+				<img
+					src="/Isometric Keycaps Illustration Asset.png"
+					alt="STEM 2026 3D Keycaps Illustration"
+					class="keycaps-asset"
+					loading="eager"
+				/>
+				<div class="mascot-wrapper">
+					<img
+						src="/illust maskot 3.png"
+						alt="STEM 2026 Mascot"
+						class="mascot-asset"
+						loading="eager"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.hero-overview-wrapper {
+		display: flex;
+		align-items: flex-start;
+		width: 100%;
+		position: relative;
+		border-bottom: 2px solid var(--navy-dark);
+		background-color: var(--bg-light);
+	}
+
+	/* Left Column */
+	.hero-left {
+		flex: 0 0 55%;
+		width: 55%;
+		border-right: 2px solid var(--navy-dark);
+		background-color: var(--bg-light);
+		box-sizing: border-box;
+	}
+
+	/* Each Screen takes exact viewport height minus top and bottom fixed bars */
+	.screen-pane {
+		min-height: calc(100vh - 120px);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 6% 8%;
+		box-sizing: border-box;
+	}
+
+	.overview-pane {
+		border-top: 2px solid var(--navy-dark);
+	}
+
+	/* Section 1: Hero Typography & Elements */
+	.hero-content {
+		max-width: 620px;
+	}
+
+	.title-group {
+		margin-bottom: 2rem;
+	}
+
+	.title-stem {
+		font-size: clamp(4.5rem, 8.8vw, 8.8rem);
+		font-weight: 900;
+		line-height: 0.9;
+		letter-spacing: -0.04em;
+		color: var(--navy-dark);
+		margin: 0;
+		text-transform: uppercase;
+	}
+
+	.title-year {
+		font-size: clamp(4.5rem, 8.8vw, 8.8rem);
+		font-weight: 900;
+		line-height: 0.95;
+		letter-spacing: -0.04em;
+		color: var(--blue-electric);
+		margin: 0;
+	}
+
+	.meta-group {
+		margin-bottom: 2.5rem;
+	}
+
+	.event-date {
+		font-size: 1.35rem;
+		font-weight: 800;
+		color: var(--navy-dark);
+		letter-spacing: -0.01em;
+		margin-bottom: 0.4rem;
+	}
+
+	.target-audience {
+		font-size: 1.05rem;
+		font-weight: 600;
+		color: var(--navy-dark);
+		opacity: 0.9;
+		letter-spacing: -0.01em;
+	}
+
+	.cta-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+	/* Neo-brutalist CTA Buttons */
+	.hero-btn {
+		display: inline-flex;
+		align-items: stretch;
+		border: 2px solid var(--navy-dark);
+		box-shadow: 4px 4px 0px var(--navy-dark);
+		text-decoration: none;
+		background-color: var(--navy-dark);
+		transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s cubic-bezier(0.2, 0, 0, 1);
+		user-select: none;
+	}
+
+	.hero-btn:hover {
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0px var(--navy-dark);
+	}
+
+	.hero-btn:hover .btn-icon {
+		background-color: var(--blue-accent-hover);
+	}
+
+	.hero-btn:hover .btn-icon svg {
+		transform: translate(2px, -2px);
+	}
+
+	.hero-btn:active {
+		transform: translate(2px, 2px);
+		box-shadow: 2px 2px 0px var(--navy-dark);
+	}
+
+	.btn-text {
+		padding: 14px 28px;
+		color: #FFFFFF;
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+	}
+
+	.btn-icon {
+		width: 52px;
+		background-color: var(--blue-accent);
+		color: var(--navy-dark);
+		border-left: 2px solid var(--navy-dark);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background-color 0.15s ease;
+	}
+
+	.btn-icon svg {
+		transition: transform 0.15s ease;
+	}
+
+	/* Section 2: Overview Content */
+	.overview-content {
+		max-width: 520px;
+		width: 100%;
+	}
+
+	.overview-lead {
+		color: var(--navy-dark);
+		font-size: 1.05rem;
+		font-weight: 700;
+		line-height: 1.55;
+		margin-bottom: 1.25rem;
+		letter-spacing: -0.01em;
+	}
+
+	.overview-theme {
+		color: var(--blue-electric);
+		font-size: 1.05rem;
+		font-weight: 700;
+		line-height: 1.55;
+		margin-bottom: 1.5rem;
+		letter-spacing: -0.01em;
+	}
+
+	.overview-divider {
+		border: none;
+		border-top: 1.5px solid #E2E5EC;
+		width: 100%;
+		margin-bottom: 1.25rem;
+	}
+
+	.timeline-list {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 2.25rem 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		color: var(--navy-dark);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	.timeline-list li {
+		display: flex;
+		align-items: center;
+	}
+
+	.timeline-list li::before {
+		content: "•";
+		color: var(--navy-dark);
+		margin-right: 0.6rem;
+		font-size: 1.15rem;
+		line-height: 1;
+	}
+
+	.overview-actions {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+		flex-wrap: wrap;
+	}
+
+	.guidebook-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #FFFFFF;
+		color: var(--navy-dark);
+		font-size: 0.9rem;
+		font-weight: 700;
+		padding: 14px 28px;
+		border: 2px solid var(--navy-dark);
+		box-shadow: 4px 4px 0px var(--navy-dark);
+		text-decoration: none;
+		user-select: none;
+		transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s cubic-bezier(0.2, 0, 0, 1);
+	}
+
+	.guidebook-btn:hover {
+		transform: translate(2px, 2px);
+		box-shadow: 2px 2px 0px var(--navy-dark);
+	}
+
+	.guidebook-btn:active {
+		transform: translate(3px, 3px);
+		box-shadow: 1px 1px 0px var(--navy-dark);
+	}
+
+	/* Right Column: Sticky Visual Container */
+	.hero-right {
+		flex: 0 0 45%;
+		width: 45%;
+		position: sticky;
+		top: 56px;
+		height: calc(100vh - 120px);
+		overflow: hidden;
+		background-color: var(--bg-light);
+		background-image: 
+			linear-gradient(to right, var(--blue-grid) 1.5px, transparent 1.5px),
+			linear-gradient(to bottom, var(--blue-grid) 1.5px, transparent 1.5px);
+		background-size: 40px 40px;
+		background-position: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Corner Icons */
+	.corner-icon {
+		position: absolute;
+		z-index: 10;
+		user-select: none;
+		transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+		cursor: default;
+	}
+
+	.corner-icon img {
+		display: block;
+		width: 58px;
+		height: auto;
+		filter: drop-shadow(0 2px 4px rgba(8, 17, 30, 0.08));
+	}
+
+	.corner-icon:hover {
+		transform: scale(1.12) rotate(4deg);
+	}
+
+	.corner-top-left {
+		top: 26px;
+		left: 26px;
+	}
+
+	.corner-top-right {
+		top: 26px;
+		right: 26px;
+	}
+
+	.corner-bottom-left {
+		bottom: 26px;
+		left: 26px;
+	}
+
+	.corner-bottom-right {
+		bottom: 26px;
+		right: 26px;
+	}
+
+	/* Stage Container */
+	.stage-container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 24px 32px;
+		box-sizing: border-box;
+	}
+
+	.visual-stage {
+		position: relative;
+		width: 100%;
+		max-width: 530px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.keycaps-asset {
+		width: 100%;
+		max-height: calc(100vh - 180px);
+		height: auto;
+		object-fit: contain;
+		display: block;
+		user-select: none;
+		pointer-events: none;
+	}
+
+	/* Mascot Placement over Keycaps - Clean without outer contour */
+	.mascot-wrapper {
+		position: absolute;
+		top: 12.5%;
+		left: 28%;
+		width: 41%;
+		max-width: 215px;
+		z-index: 5;
+		cursor: pointer;
+		animation: mascotFloat 4s ease-in-out infinite;
+		transform-origin: bottom center;
+	}
+
+	.mascot-asset {
+		width: 100%;
+		height: auto;
+		display: block;
+		filter: drop-shadow(-3px 5px 6px rgba(8, 17, 30, 0.22));
+		transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+		user-select: none;
+	}
+
+	.mascot-wrapper:hover .mascot-asset {
+		transform: scale(1.08) rotate(-3deg);
+	}
+
+	@keyframes mascotFloat {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-8px);
+		}
+	}
+
+	/* Responsive Styling */
+	@media (max-width: 1024px) {
+		.hero-overview-wrapper {
+			flex-direction: column;
+		}
+
+		.hero-left {
+			flex: none;
+			width: 100%;
+			border-right: none;
+		}
+
+		.screen-pane {
+			min-height: auto;
+			padding: 48px 28px;
+		}
+
+		.hero-right {
+			flex: none;
+			width: 100%;
+			position: relative;
+			top: 0;
+			height: 520px;
+			min-height: 480px;
+			padding: 40px 20px;
+			border-top: 2px solid var(--navy-dark);
+		}
+
+		.visual-stage {
+			max-width: 400px;
+		}
+
+		.corner-icon img {
+			width: 46px;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.screen-pane {
+			padding: 36px 20px;
+		}
+
+		.title-stem, .title-year {
+			font-size: clamp(3.4rem, 16vw, 4.8rem);
+		}
+
+		.event-date {
+			font-size: 1.15rem;
+		}
+
+		.target-audience {
+			font-size: 0.95rem;
+		}
+
+		.hero-right {
+			height: 420px;
+			min-height: 400px;
+		}
+
+		.visual-stage {
+			max-width: 320px;
+		}
+
+		.corner-top-left {
+			top: 16px;
+			left: 16px;
+		}
+
+		.corner-top-right {
+			top: 16px;
+			right: 16px;
+		}
+
+		.corner-bottom-left {
+			bottom: 16px;
+			left: 16px;
+		}
+
+		.corner-bottom-right {
+			bottom: 16px;
+			right: 16px;
+		}
+
+		.corner-icon img {
+			width: 38px;
+		}
+
+		.overview-actions {
+			flex-direction: column;
+			align-items: stretch;
+		}
+
+		.guidebook-btn, .hero-btn {
+			width: 100%;
+			justify-content: center;
+		}
+
+		.btn-text {
+			flex: 1;
+			justify-content: center;
+		}
+	}
+</style>

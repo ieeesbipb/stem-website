@@ -1,0 +1,143 @@
+---
+---
+
+<header class="top-bar">
+	<div class="top-left">
+		<a href="/" class="brand-link" aria-label="STEM 2026 Home">
+			<span class="logo-box" aria-hidden="true"></span>
+			<span class="brand-text">2026</span>
+		</a>
+	</div>
+	<div class="top-right">
+		<span class="date-tag">
+			<span class="tag-bracket">&lt;date&gt;</span>
+			<span class="date-value">TBA</span>
+			<span class="tag-bracket">&lt;/date&gt;</span>
+		</span>
+	</div>
+</header>
+
+<style>
+	.top-bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: flex;
+		align-items: stretch;
+		height: 56px;
+		width: 100%;
+		border-bottom: 2px solid var(--navy-dark);
+		background-color: var(--bg-light);
+		z-index: 50;
+		transition: background-color 0.3s ease, border-color 0.3s ease;
+	}
+
+	/* Dark theme mode when scrolled into Why Join */
+	.top-bar.theme-dark {
+		background-color: #051020;
+		border-bottom: 2px solid #2B5B9E;
+	}
+
+	.top-bar.theme-dark .top-left {
+		background-color: #051020;
+	}
+
+	.top-bar.theme-dark .brand-text {
+		color: #FFFFFF;
+	}
+
+	.top-bar.theme-dark .logo-box {
+		background-color: #FFFFFF;
+	}
+
+	.top-bar.theme-dark .top-right {
+		background-color: #051020;
+		border-left: 2px solid #2B5B9E;
+	}
+
+	.top-left {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		padding: 0 32px;
+		background-color: var(--bg-light);
+		transition: background-color 0.3s ease;
+	}
+
+	.brand-link {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		text-decoration: none;
+		color: var(--navy-dark);
+	}
+
+	.logo-box {
+		display: inline-block;
+		width: 48px;
+		height: 22px;
+		background-color: var(--navy-dark);
+		border-radius: 0px;
+	}
+
+	.brand-text {
+		font-size: 1.25rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		color: var(--navy-dark);
+	}
+
+	.top-right {
+		width: 220px;
+		min-width: 200px;
+		background-color: var(--navy-dark);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-left: 2px solid var(--navy-dark);
+		user-select: none;
+	}
+
+	.date-tag {
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 0.95rem;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		letter-spacing: -0.01em;
+	}
+
+	.tag-bracket {
+		color: var(--blue-accent);
+	}
+
+	.date-value {
+		color: #FFFFFF;
+		font-weight: 700;
+	}
+
+	@media (max-width: 768px) {
+		.top-left {
+			padding: 0 16px;
+		}
+
+		.top-right {
+			width: 170px;
+			min-width: 160px;
+		}
+
+		.date-tag {
+			font-size: 0.85rem;
+		}
+
+		.logo-box {
+			width: 40px;
+			height: 18px;
+		}
+
+		.brand-text {
+			font-size: 1.1rem;
+		}
+	}
+</style>
