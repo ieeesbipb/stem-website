@@ -1,11 +1,11 @@
 ---
 const events = [
-  { title: 'Seminar 1', type: 'Seminar', color: '#ffda3e', image: 1 },
-  { title: 'Seminar 2', type: 'Seminar', color: '#50d6a1', image: 3 },
-  { title: 'Workshop 1', type: 'Workshop', color: '#4d9aff', image: 2 },
-  { title: 'Workshop 2', type: 'Workshop', color: '#e5caf7', image: 1 },
-  { title: 'Seminar 3', type: 'Seminar', color: '#ff6a28', image: 3 },
-  { title: 'Closing', type: 'Closing', color: '#ffda3e', image: 2 },
+  { title: 'Seminar 1', type: 'Seminar', color: '#ffda3e' },
+  { title: 'Seminar 2', type: 'Seminar', color: '#50d6a1' },
+  { title: 'Workshop 1', type: 'Workshop', color: '#4d9aff' },
+  { title: 'Workshop 2', type: 'Workshop', color: '#e5caf7' },
+  { title: 'Seminar 3', type: 'Seminar', color: '#ff6a28' },
+  { title: 'Closing', type: 'Closing', color: '#ffda3e' },
 ];
 ---
 <section id="event-flow" class="event-flow new-section" aria-labelledby="event-flow-title">
@@ -13,14 +13,31 @@ const events = [
     <h2 id="event-flow-title" class="section-heading" data-reveal>Event Flow</h2>
     <div class="event-grid">
       {events.map((event, index) => (
-        <article class="event-card" style={`--card-color: ${event.color}; --reveal-delay: ${(index % 2) * 100}ms`} data-reveal>
+        <article class="event-card" style={`--card-color: ${event.color};`} data-col={index % 2}>
           <span class="event-badge">{event.type}</span>
-          <div class="event-titlebar"><h3><span aria-hidden="true">→</span>{event.title}</h3></div>
-          <div class="event-illustration">
-            <span class="event-number" aria-hidden="true">0{index + 1}</span>
-            <img src={`/illust maskot ${event.image}.png`} alt="" loading="lazy" width="160" height="190" data-parallax />
+          <div class="event-titlebar">
+            <div class="event-titlebar-inner">
+              <span class="event-icon-box" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 28 28" fill="currentColor">
+                  <circle cx="5" cy="14" r="1.35" />
+                  <circle cx="8.5" cy="14" r="1.35" />
+                  <circle cx="12" cy="14" r="1.35" />
+                  <circle cx="15.5" cy="14" r="1.35" />
+                  <circle cx="19" cy="14" r="1.35" />
+                  <circle cx="22.5" cy="14" r="1.35" />
+                  <circle cx="15.5" cy="7.5" r="1.35" />
+                  <circle cx="19" cy="10.8" r="1.35" />
+                  <circle cx="15.5" cy="20.5" r="1.35" />
+                  <circle cx="19" cy="17.2" r="1.35" />
+                </svg>
+              </span>
+              <h3 class="event-title-text">{event.title}</h3>
+            </div>
           </div>
-          <div class="event-description"><p>Topic to be announced.</p><p>Time: TBA</p></div>
+          <div class="event-illustration" aria-hidden="true"></div>
+          <div class="event-description">
+            <p><strong>{event.type}:</strong> Topic to be announced. Explore emerging tech, IoT, and engineering solutions.</p>
+          </div>
         </article>
       ))}
     </div>

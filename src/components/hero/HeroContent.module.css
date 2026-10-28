@@ -11,7 +11,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 4% 8%;
+	padding: 4% var(--site-gutter);
 	box-sizing: border-box;
 }
 
@@ -76,7 +76,7 @@
 .targetAudience {
 	font-size: 1.08rem;
 	font-style: italic;
-	font-weight: 600;
+	font-weight: 400;
 	color: var(--navy-dark);
 	letter-spacing: -0.015em;
 	margin: 0;
@@ -233,13 +233,13 @@
 
 	.screenPane {
 		min-height: auto;
-		padding: 48px 28px;
+		padding: 48px var(--site-gutter);
 	}
 }
 
 @media (max-width: 640px) {
 	.screenPane {
-		padding: 36px 20px;
+		padding: 36px var(--site-gutter);
 	}
 
 	.titleStem, .titleYear {

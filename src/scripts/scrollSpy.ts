@@ -8,6 +8,8 @@ export function initScrollSpy(): void {
 	const sections = [...document.querySelectorAll<HTMLElement>('#hero, #overview, #why-join, #event-flow, #partners, #past-editions, #register')];
 	const whyJoinSection = document.getElementById('why-join');
 	const columns = [...document.querySelectorAll<HTMLElement>('[data-column-index]')];
+	const eventFlowSection = document.getElementById('event-flow');
+	const eventFlowCards = [...document.querySelectorAll<HTMLElement>('#event-flow .event-card')];
 
 	// Route all section links through the same scroll engine, including hero CTAs.
 	const brandLink = document.querySelector<HTMLAnchorElement>('[data-brand-link]');
@@ -25,21 +27,40 @@ export function initScrollSpy(): void {
 		});
 	});
 
-	// Preserve origin's staggered Why Join column parallax.
+	// Continuous staggered parallax for Why Join and Event Flow (no stop/finish).
 	function updateParallax() {
-		if (!whyJoinSection || columns.length < 3) return;
-		if (window.innerWidth <= 1024 || reducedMotion.matches) {
-			columns.forEach(column => column.style.removeProperty('transform'));
-			return;
+		const isMobileOrReduced = window.innerWidth <= 1024 || reducedMotion.matches;
+
+		if (whyJoinSection && columns.length >= 3) {
+			if (isMobileOrReduced) {
+				columns.forEach(column => column.style.removeProperty('transform'));
+			} else {
+				const rect = whyJoinSection.getBoundingClientRect();
+				if (rect.bottom >= -300 && rect.top <= window.innerHeight + 300) {
+					const delta = rect.top - 80;
+					const factors = [0, 0.1, 0.2];
+					columns.forEach((column, index) => {
+						column.style.transform = `translateY(${delta * (factors[index] ?? 0)}px)`;
+					});
+				}
+			}
 		}
-		const top = whyJoinSection.getBoundingClientRect().top;
-		const start = window.innerHeight * 0.6;
-		const end = -window.innerHeight * 0.45;
-		const progress = Math.min(Math.max((start - top) / (start - end), 0), 1);
-		const offsets = [0, 200, 400];
-		columns.forEach((column, index) => {
-			column.style.transform = `translateY(${(1 - progress) * (offsets[index] ?? 0)}px)`;
-		});
+
+		if (eventFlowSection && eventFlowCards.length) {
+			if (isMobileOrReduced) {
+				eventFlowCards.forEach(card => card.style.removeProperty('transform'));
+			} else {
+				const rect = eventFlowSection.getBoundingClientRect();
+				if (rect.bottom >= -300 && rect.top <= window.innerHeight + 300) {
+					const delta = rect.top - 80;
+					const factor = 0.1;
+					eventFlowCards.forEach(card => {
+						const col = Number(card.dataset.col || 0);
+						card.style.transform = `translateY(${col * delta * factor}px)`;
+					});
+				}
+			}
+		}
 	}
 
 	function update() {
