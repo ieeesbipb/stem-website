@@ -1,4 +1,10 @@
+import Lenis from 'lenis';
+
 export function initScrollSpy(): void {
+	const lenis = new Lenis({
+		autoRaf: true,
+	});
+
 	const topBar = document.querySelector<HTMLElement>('[data-top-bar]');
 	const navOverview = document.getElementById('nav-overview');
 	const navWhyJoin = document.getElementById('nav-why-join');
@@ -8,25 +14,25 @@ export function initScrollSpy(): void {
 	const brandLink = document.querySelector<HTMLElement>('[data-brand-link]');
 	const columns = document.querySelectorAll<HTMLElement>('[data-column-index]');
 
-	// Smooth click navigation
+	// Smooth click navigation via Lenis
 	if (navOverview && overviewSection) {
 		navOverview.addEventListener('click', (e) => {
 			e.preventDefault();
-			overviewSection.scrollIntoView({ behavior: 'smooth' });
+			lenis.scrollTo(overviewSection, { offset: -56 });
 		});
 	}
 
 	if (navWhyJoin && whyJoinSection) {
 		navWhyJoin.addEventListener('click', (e) => {
 			e.preventDefault();
-			whyJoinSection.scrollIntoView({ behavior: 'smooth' });
+			lenis.scrollTo(whyJoinSection, { offset: -56 });
 		});
 	}
 
 	if (brandLink && heroSection) {
 		brandLink.addEventListener('click', (e) => {
 			e.preventDefault();
-			heroSection.scrollIntoView({ behavior: 'smooth' });
+			lenis.scrollTo(heroSection);
 		});
 	}
 
@@ -42,15 +48,16 @@ export function initScrollSpy(): void {
 		const rect = whyJoinSection.getBoundingClientRect();
 		const windowHeight = window.innerHeight;
 
-		// Progress from 0 (section enters viewport) to 1 (section centered/in view)
-		const startOffset = windowHeight;
-		const endOffset = 120;
+		// Calculate total scroll distance available within the section
+		// Start parallax when section top enters 60% viewport
+		// Finish alignment deep into the scroll (section top has scrolled far above viewport)
+		const startOffset = windowHeight * 0.6;
+		const endOffset = -(windowHeight * 0.45);
 		const progress = Math.min(Math.max((startOffset - rect.top) / (startOffset - endOffset), 0), 1);
 		const remaining = 1 - progress;
 
-		// Staggered offsets: left leads, middle lags behind, right lags most
-		// At progress = 1, all reach translateY(0) and align perfectly
-		const offsets = [20, 90, 170];
+		// Staggered offsets: left leads (0), middle lags (200px), right lags most (400px)
+		const offsets = [0, 200, 400];
 
 		columns.forEach((col, idx) => {
 			const currentOffset = remaining * (offsets[idx] ?? 0);
@@ -81,7 +88,7 @@ export function initScrollSpy(): void {
 			updateParallax();
 		};
 
-		window.addEventListener('scroll', updateStateOnScroll, { passive: true });
+		lenis.on('scroll', updateStateOnScroll);
 		window.addEventListener('resize', updateParallax, { passive: true });
 		updateStateOnScroll();
 	}

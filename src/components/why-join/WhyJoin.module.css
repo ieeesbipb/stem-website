@@ -1,5 +1,5 @@
 .whyJoinSection {
-	min-height: calc(100vh - 120px);
+	min-height: 140vh;
 	width: 100%;
 	position: relative;
 	overflow: hidden;
@@ -8,42 +8,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
-	padding: 5rem 6% 7rem calc(6% + 24px);
+	justify-content: flex-start;
+	padding: 8rem 6% 16rem;
 	box-sizing: border-box;
 	border-bottom: 2px solid #08111E;
-}
-
-/* Top Horizontal Framing Accent Bar */
-.accentBarTop {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 14px;
-	background-color: #2B5B9E;
-	z-index: 2;
-}
-
-/* Left Vertical Framing Accent Bar */
-.accentBarLeft {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 24px;
-	height: 100%;
-	background-color: #2B5B9E;
-	z-index: 3;
-}
-
-/* Corner Intersection Accent Square */
-.accentCornerSquare {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 24px;
-	height: 14px;
-	background-color: #3C78C8;
 }
 
 /* Section Content Container */
@@ -61,17 +29,18 @@
 }
 
 .sectionTitle {
+	font-family: var(--font-heading);
 	color: #FFFFFF;
-	font-size: clamp(2.3rem, 4.5vw, 3.75rem);
-	font-weight: 800;
-	letter-spacing: -0.02em;
-	margin: 0 0 0.75rem 0;
-	line-height: 1.1;
+	font-size: clamp(3rem, 6vw, 5.2rem);
+	font-weight: 500;
+	letter-spacing: -0.03em;
+	margin: 0 0 1rem 0;
+	line-height: 1.05;
 }
 
 .sectionSubtitle {
 	color: #D0D7E2;
-	font-size: 1.05rem;
+	font-size: clamp(1.1rem, 1.6vw, 1.35rem);
 	font-weight: 400;
 	margin: 0;
 	letter-spacing: -0.01em;
@@ -99,7 +68,7 @@
 
 @media (max-width: 1024px) {
 	.whyJoinSection {
-		padding: 4.5rem 5% 5rem calc(5% + 24px);
+		padding: 4.5rem 5% 5rem;
 		min-height: auto;
 	}
 
@@ -116,12 +85,7 @@
 
 @media (max-width: 720px) {
 	.whyJoinSection {
-		padding: 3.5rem 1.25rem 4rem calc(1.25rem + 16px);
-	}
-
-	.accentBarLeft,
-	.accentCornerSquare {
-		width: 16px;
+		padding: 3.5rem 1.25rem 4rem;
 	}
 
 	.columnsContainer {

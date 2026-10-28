@@ -1,10 +1,1 @@
-:root {
-	--bg-light: #F9F9FB;
-	--navy-dark: #08111E;
-	--blue-electric: #1400FF;
-	--blue-accent: #4DA6FF;
-	--blue-accent-hover: #3898FA;
-	--blue-grid: #CBE3FF;
-	--tab-hover: #EAECEF;
-	--border-dark: 2px solid #08111E;
-}
+@import './tokens.css';

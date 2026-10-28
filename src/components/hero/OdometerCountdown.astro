@@ -1,0 +1,102 @@
+---
+import styles from './OdometerCountdown.module.css';
+
+interface Props {
+	dateText?: string;
+}
+
+const { dateText = "22 November 2026" } = Astro.props;
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+---
+
+<div class={styles.countdownBox} data-countdown>
+	<!-- Date Slot -->
+	<div class:list={[styles.segment, styles.dateSegment]}>
+		<span class={styles.dateSlotValue}>{dateText}</span>
+	</div>
+
+	<!-- Months -->
+	<div class={styles.segment}>
+		<div class={styles.digitPair}>
+			<div class={styles.digitSlot} data-digit="m0">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+			<div class={styles.digitSlot} data-digit="m1">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+		</div>
+		<span class={styles.sideLabel}>M</span>
+	</div>
+
+	<!-- Days -->
+	<div class={styles.segment}>
+		<div class={styles.digitPair}>
+			<div class={styles.digitSlot} data-digit="d0">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+			<div class={styles.digitSlot} data-digit="d1">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+		</div>
+		<span class={styles.sideLabel}>D</span>
+	</div>
+
+	<!-- Hours -->
+	<div class={styles.segment}>
+		<div class={styles.digitPair}>
+			<div class={styles.digitSlot} data-digit="h0">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+			<div class={styles.digitSlot} data-digit="h1">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+		</div>
+		<span class={styles.sideLabel}>H</span>
+	</div>
+
+	<!-- Minutes -->
+	<div class={styles.segment}>
+		<div class={styles.digitPair}>
+			<div class={styles.digitSlot} data-digit="min0">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+			<div class={styles.digitSlot} data-digit="min1">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+		</div>
+		<span class={styles.sideLabel}>M</span>
+	</div>
+
+	<!-- Seconds -->
+	<div class={styles.segment}>
+		<div class={styles.digitPair}>
+			<div class={styles.digitSlot} data-digit="s0">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+			<div class={styles.digitSlot} data-digit="s1">
+				<div class={styles.digitTrack} data-digit-track>
+					{digits.map((n) => <span class={styles.digitItem}>{n}</span>)}
+				</div>
+			</div>
+		</div>
+		<span class={styles.sideLabel}>S</span>
+	</div>
+</div>

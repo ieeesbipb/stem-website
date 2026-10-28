@@ -18,5 +18,10 @@ import styles from './index.module.css';
 
 <script>
 	import { initScrollSpy } from '../scripts/scrollSpy';
-	document.addEventListener('DOMContentLoaded', initScrollSpy);
+	import { initCountdown } from '../scripts/countdown';
+
+	document.addEventListener('DOMContentLoaded', () => {
+		initScrollSpy();
+		initCountdown();
+	});
 </script>
