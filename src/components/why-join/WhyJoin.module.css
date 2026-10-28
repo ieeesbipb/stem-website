@@ -9,7 +9,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 5rem 6% 6.5rem calc(6% + 24px);
+	padding: 5rem 6% 7rem calc(6% + 24px);
 	box-sizing: border-box;
 	border-bottom: 2px solid #08111E;
 }
@@ -48,7 +48,7 @@
 
 /* Section Content Container */
 .whyJoinContainer {
-	max-width: 1180px;
+	max-width: 1200px;
 	width: 100%;
 	position: relative;
 	z-index: 4;
@@ -57,7 +57,7 @@
 /* Centered Header */
 .sectionHeader {
 	text-align: center;
-	margin-bottom: 3.5rem;
+	margin-bottom: 4rem;
 }
 
 .sectionTitle {
@@ -77,40 +77,24 @@
 	letter-spacing: -0.01em;
 }
 
-/* 3-Column Staggered Grid */
-.cardsGrid {
+/* 3-Column Staggered Grid Container */
+.columnsContainer {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 2.25rem 2.5rem;
+	gap: 2.5rem;
 	width: 100%;
-	position: relative;
+	align-items: start;
 }
 
-/* Bottom-Right Mascot */
-.mascotContainer {
-	position: absolute;
-	right: 3%;
-	bottom: 3.5%;
-	width: clamp(130px, 12vw, 175px);
-	z-index: 10;
-	pointer-events: none;
+.column {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+	will-change: transform;
 }
 
-.whyJoinMascot {
+.cardItem {
 	width: 100%;
-	height: auto;
-	display: block;
-	filter: drop-shadow(-4px 8px 14px rgba(0, 0, 0, 0.45));
-	animation: mascotBreathe 4s ease-in-out infinite;
-}
-
-@keyframes mascotBreathe {
-	0%, 100% {
-		transform: translateY(0px) scale(1);
-	}
-	50% {
-		transform: translateY(-5px) scale(1.02);
-	}
 }
 
 @media (max-width: 1024px) {
@@ -119,16 +103,14 @@
 		min-height: auto;
 	}
 
-	.cardsGrid {
+	.columnsContainer {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 2rem;
 	}
 
-	.mascotContainer {
-		right: 2%;
-		bottom: 2%;
-		width: 120px;
-		opacity: 0.85;
+	.column {
+		transform: none !important;
+		gap: 2rem;
 	}
 }
 
@@ -137,24 +119,17 @@
 		padding: 3.5rem 1.25rem 4rem calc(1.25rem + 16px);
 	}
 
-	.accentBarLeft {
-		width: 16px;
-	}
-
+	.accentBarLeft,
 	.accentCornerSquare {
 		width: 16px;
 	}
 
-	.cardsGrid {
+	.columnsContainer {
 		grid-template-columns: 1fr;
-		gap: 1.75rem;
+		gap: 2rem;
 	}
 
 	.sectionHeader {
 		margin-bottom: 2.5rem;
-	}
-
-	.mascotContainer {
-		display: none;
 	}
 }

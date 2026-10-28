@@ -1,61 +1,54 @@
-.cardWrapper {
-	display: flex;
-	flex-direction: column;
-	transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
-}
-
-/* Column 2 Staggered Offset */
-@media (min-width: 1025px) {
-	.cardStaggered {
-		transform: translateY(36px);
-	}
-
-	.cardStaggered:hover {
-		transform: translateY(32px);
-	}
-
-	.cardWrapper:not(.cardStaggered):hover {
-		transform: translateY(-4px);
-	}
-}
-
-/* Card Outer Frame with L-shaped Accent Border */
-.cardOuterFrame {
+.cardOuter {
 	position: relative;
-	border: 1.5px solid #3A4659;
-	border-left: 14px solid #3A4659;
-	border-top: 10px solid #3A4659;
-	padding: 14px 16px 16px 16px;
-	background-color: transparent;
+	width: 100%;
+	background-color: #07152B;
+	background-image: 
+		linear-gradient(to right, rgba(58, 128, 218, 0.4) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(58, 128, 218, 0.4) 1px, transparent 1px);
+	background-size: 24px 24px;
+	background-position: -1px -1px;
+	border: 1.5px solid #234E82;
+	padding: 24px 20px 24px 20px;
 	box-sizing: border-box;
-	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+	transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), border-color 0.2s ease;
 }
 
-/* Top-Left Overlapping Badge */
+.cardOuter:hover {
+	border-color: #4DA6FF;
+}
+
+/* Top-Left Corner Badge */
 .cardBadge {
 	position: absolute;
 	top: -14px;
-	left: 14px;
+	left: -1px;
 	z-index: 5;
-	padding: 4px 10px;
-	font-family: 'JetBrains Mono', monospace;
-	font-size: 0.85rem;
-	font-weight: 800;
+	width: 36px;
+	height: 36px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border: 1.5px solid #051020;
-	box-shadow: 1.5px 1.5px 0px #051020;
-	line-height: 1;
+	box-shadow: 2px 2px 0px #051020;
 	user-select: none;
 }
 
-/* Inner White Card Box */
-.cardInnerBox {
-	background-color: #F9F9FB;
+.badgeIcon {
+	width: 22px;
+	height: 22px;
+	display: block;
+}
+
+/* Inner White Box */
+.cardInner {
+	background-color: #FFFFFF;
 	color: #08111E;
-	padding: 26px 24px;
-	min-height: 105px;
+	padding: 24px 22px;
+	min-height: 110px;
 	display: flex;
 	align-items: center;
-	border: 1.5px solid #051020;
+	border: 2px solid #051020;
 	box-sizing: border-box;
 }
 
@@ -68,16 +61,14 @@
 	letter-spacing: -0.01em;
 }
 
-@media (max-width: 1024px) {
-	.cardStaggered {
-		transform: none;
+@media (max-width: 640px) {
+	.cardOuter {
+		padding: 20px 16px;
 	}
-}
 
-@media (max-width: 720px) {
-	.cardInnerBox {
-		padding: 20px 18px;
-		min-height: 85px;
+	.cardInner {
+		padding: 20px 16px;
+		min-height: 90px;
 	}
 
 	.cardText {

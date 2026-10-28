@@ -9,16 +9,49 @@ interface Props {
 const { card } = Astro.props;
 ---
 
-<div class:list={[styles.cardWrapper, card.stagger && styles.cardStaggered]}>
-	<div class={styles.cardOuterFrame}>
-		<span
-			class={styles.cardBadge}
-			style={`background-color: ${card.badgeBg}; color: ${card.badgeColor};`}
+<div class={styles.cardOuter}>
+	<div
+		class={styles.cardBadge}
+		style={`background-color: ${card.badgeBg};`}
+		title={`Item ${card.num}`}
+	>
+		<svg
+			class={styles.badgeIcon}
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			aria-hidden="true"
 		>
-			{card.num}
-		</span>
-		<div class={styles.cardInnerBox}>
-			<p class={styles.cardText}>{card.text}</p>
-		</div>
+			<!-- Yellow Helmet -->
+			<path
+				d="M5 11C5 7.13401 8.13401 4 12 4C15.866 4 19 7.13401 19 11H5Z"
+				fill="#FFD000"
+				stroke="#051020"
+				stroke-width="1.8"
+			/>
+			<rect
+				x="4"
+				y="10"
+				width="16"
+				height="2.5"
+				rx="1"
+				fill="#FFD000"
+				stroke="#051020"
+				stroke-width="1.8"
+			/>
+			<!-- Face -->
+			<path
+				d="M6 12.5H18V16.5C18 18.7091 16.2091 20.5 14 20.5H10C7.79086 20.5 6 18.7091 6 16.5V12.5Z"
+				fill="#FFFFFF"
+				stroke="#051020"
+				stroke-width="1.8"
+			/>
+			<!-- Visor / Sunglasses -->
+			<rect x="7.5" y="13.5" width="9" height="3" rx="0.8" fill="#051020" />
+		</svg>
+	</div>
+
+	<div class={styles.cardInner}>
+		<p class={styles.cardText}>{card.text}</p>
 	</div>
 </div>
