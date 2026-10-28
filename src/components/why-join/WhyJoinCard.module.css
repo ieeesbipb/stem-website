@@ -1,0 +1,86 @@
+.cardWrapper {
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* Column 2 Staggered Offset */
+@media (min-width: 1025px) {
+	.cardStaggered {
+		transform: translateY(36px);
+	}
+
+	.cardStaggered:hover {
+		transform: translateY(32px);
+	}
+
+	.cardWrapper:not(.cardStaggered):hover {
+		transform: translateY(-4px);
+	}
+}
+
+/* Card Outer Frame with L-shaped Accent Border */
+.cardOuterFrame {
+	position: relative;
+	border: 1.5px solid #3A4659;
+	border-left: 14px solid #3A4659;
+	border-top: 10px solid #3A4659;
+	padding: 14px 16px 16px 16px;
+	background-color: transparent;
+	box-sizing: border-box;
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* Top-Left Overlapping Badge */
+.cardBadge {
+	position: absolute;
+	top: -14px;
+	left: 14px;
+	z-index: 5;
+	padding: 4px 10px;
+	font-family: 'JetBrains Mono', monospace;
+	font-size: 0.85rem;
+	font-weight: 800;
+	border: 1.5px solid #051020;
+	box-shadow: 1.5px 1.5px 0px #051020;
+	line-height: 1;
+	user-select: none;
+}
+
+/* Inner White Card Box */
+.cardInnerBox {
+	background-color: #F9F9FB;
+	color: #08111E;
+	padding: 26px 24px;
+	min-height: 105px;
+	display: flex;
+	align-items: center;
+	border: 1.5px solid #051020;
+	box-sizing: border-box;
+}
+
+.cardText {
+	font-size: 1.15rem;
+	font-weight: 700;
+	line-height: 1.35;
+	color: #08111E;
+	margin: 0;
+	letter-spacing: -0.01em;
+}
+
+@media (max-width: 1024px) {
+	.cardStaggered {
+		transform: none;
+	}
+}
+
+@media (max-width: 720px) {
+	.cardInnerBox {
+		padding: 20px 18px;
+		min-height: 85px;
+	}
+
+	.cardText {
+		font-size: 1.05rem;
+	}
+}

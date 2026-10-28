@@ -1,0 +1,19 @@
+---
+import styles from './TopBar.module.css';
+---
+
+<header class={styles.topBar} data-top-bar>
+	<div class={styles.topLeft}>
+		<a href="/" class={styles.brandLink} aria-label="STEM 2026 Home" data-brand-link>
+			<span class={styles.logoBox} aria-hidden="true"></span>
+			<span class={styles.brandText}>2026</span>
+		</a>
+	</div>
+	<div class={styles.topRight}>
+		<span class={styles.dateTag}>
+			<span class={styles.tagBracket}>&lt;date&gt;</span>
+			<span class={styles.dateValue}>TBA</span>
+			<span class={styles.tagBracket}>&lt;/date&gt;</span>
+		</span>
+	</div>
+</header>

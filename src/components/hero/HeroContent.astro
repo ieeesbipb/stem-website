@@ -1,0 +1,69 @@
+---
+import styles from './HeroContent.module.css';
+---
+
+<div class={styles.heroLeft}>
+	<!-- Screen 1: Hero Intro -->
+	<section class={styles.screenPane} id="hero">
+		<div class={styles.heroContent}>
+			<div class={styles.titleGroup}>
+				<h1 class={styles.titleStem}>STEM</h1>
+				<div class={styles.titleYear}>2026</div>
+			</div>
+
+			<div class={styles.metaGroup}>
+				<p class={styles.eventDate}>Date: TBA</p>
+				<p class={styles.targetAudience}>For high school students (SMA/SMK)</p>
+			</div>
+
+			<div class={styles.ctaWrapper}>
+				<a href="#register" class={styles.heroBtn} id="hero-register-btn">
+					<span class={styles.btnText}>Register Now</span>
+					<span class={styles.btnIcon} aria-hidden="true">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square">
+							<path d="M7 17L17 7" />
+							<path d="M7 7h10v10" />
+						</svg>
+					</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Screen 2: Overview Content -->
+	<section class:list={[styles.screenPane, styles.overviewPane]} id="overview">
+		<div class={styles.overviewContent}>
+			<p class={styles.overviewLead}>
+				STEM 2026 is a flagship program of IEEE Student Branch IPB University, built to foster knowledge and technological engineering for real-world applications.
+			</p>
+
+			<p class={styles.overviewTheme}>
+				This year's theme, From Reactive to Proactive, explores how IoT can help Indonesia prepare for natural disasters before they happen.
+			</p>
+
+			<hr class={styles.overviewDivider} />
+
+			<ul class={styles.timelineList}>
+				<li>Registration opens: TBA</li>
+				<li>Registration closes: TBA</li>
+				<li>Main event: TBA</li>
+			</ul>
+
+			<div class={styles.overviewActions}>
+				<a href="#guidebook" class={styles.guidebookBtn} id="download-guidebook-btn">
+					Download Guidebook
+				</a>
+
+				<a href="#register" class={styles.heroBtn} id="overview-register-btn">
+					<span class={styles.btnText}>Register Now</span>
+					<span class={styles.btnIcon} aria-hidden="true">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square">
+							<path d="M7 17L17 7" />
+							<path d="M7 7h10v10" />
+						</svg>
+					</span>
+				</a>
+			</div>
+		</div>
+	</section>
+</div>

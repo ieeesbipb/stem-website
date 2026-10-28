@@ -1,0 +1,14 @@
+.heroOverviewWrapper {
+	display: flex;
+	align-items: flex-start;
+	width: 100%;
+	position: relative;
+	border-bottom: 2px solid var(--navy-dark);
+	background-color: var(--bg-light);
+}
+
+@media (max-width: 1024px) {
+	.heroOverviewWrapper {
+		flex-direction: column;
+	}
+}

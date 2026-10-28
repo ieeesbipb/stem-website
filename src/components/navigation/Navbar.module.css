@@ -1,0 +1,156 @@
+.bottomNav {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 64px;
+	width: 100%;
+	border-top: 2px solid var(--navy-dark);
+	background-color: var(--bg-light);
+	display: flex;
+	align-items: stretch;
+	z-index: 50;
+}
+
+.navLinksScroll {
+	display: flex;
+	align-items: stretch;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.navLinksScroll::-webkit-scrollbar {
+	display: none;
+}
+
+.navItem {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 0 28px;
+	border-right: 2px solid var(--navy-dark);
+	background-color: #FFFFFF;
+	color: var(--navy-dark);
+	font-size: 14px;
+	font-weight: 700;
+	white-space: nowrap;
+	text-decoration: none;
+	transition: background-color 0.2s ease, color 0.2s ease;
+	user-select: none;
+}
+
+.navItem:hover:not([data-active]) {
+	background-color: var(--tab-hover);
+}
+
+.navItem[data-active="blue"] {
+	background-color: var(--blue-accent);
+	color: var(--navy-dark);
+}
+
+.navItem[data-active="yellow"] {
+	background-color: #FFD600 !important;
+	color: var(--navy-dark) !important;
+}
+
+.activeIndicator {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 12px;
+	height: 12px;
+}
+
+.navItem[data-active] .activeIndicator {
+	display: flex;
+}
+
+.navLabel {
+	letter-spacing: -0.01em;
+}
+
+/* Right CTA Area */
+.navCta {
+	flex: 1;
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	background-color: var(--navy-dark);
+	color: #FFFFFF;
+	text-decoration: none;
+	transition: opacity 0.15s ease;
+	min-width: 200px;
+}
+
+.ctaLabel {
+	display: flex;
+	align-items: center;
+	padding-left: 32px;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+.ctaArrowBox {
+	width: 64px;
+	height: 64px;
+	min-width: 64px;
+	background-color: var(--blue-accent);
+	color: var(--navy-dark);
+	border-left: 2px solid var(--navy-dark);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.navCta:hover .ctaArrowBox {
+	background-color: var(--blue-accent-hover);
+}
+
+.navCta:hover .ctaArrowBox svg {
+	transform: translate(2px, -2px);
+}
+
+.ctaArrowBox svg {
+	transition: transform 0.15s ease;
+}
+
+@media (max-width: 1024px) {
+	.navItem {
+		padding: 0 20px;
+		font-size: 13px;
+	}
+
+	.ctaLabel {
+		padding-left: 20px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 640px) {
+	.bottomNav {
+		height: 56px;
+	}
+
+	.navItem {
+		padding: 0 16px;
+		font-size: 13px;
+	}
+
+	.ctaLabel {
+		display: none;
+	}
+
+	.ctaArrowBox {
+		width: 56px;
+		height: 56px;
+		min-width: 56px;
+	}
+
+	.navCta {
+		flex: 0 0 auto;
+		min-width: unset;
+	}
+}

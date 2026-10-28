@@ -1,29 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import TopBar from '../components/TopBar.astro';
-import Hero from '../components/Hero.astro';
-import WhyJoin from '../components/WhyJoin.astro';
-import Navbar from '../components/Navbar.astro';
+import TopBar from '../components/navigation/TopBar.astro';
+import Navbar from '../components/navigation/Navbar.astro';
+import Hero from '../components/hero/Hero.astro';
+import WhyJoin from '../components/why-join/WhyJoin.astro';
+import styles from './index.module.css';
 ---
 
 <Layout title="STEM 2026 | National High School Technology & Engineering Competition">
 	<TopBar />
-	<main class="page-container">
+	<main class={styles.pageContainer}>
 		<Hero />
 		<WhyJoin />
 	</main>
 	<Navbar />
 </Layout>
 
-<style>
-	.page-container {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-		width: 100%;
-		background-color: var(--bg-light);
-		padding-top: 56px;
-		padding-bottom: 64px;
-		box-sizing: border-box;
-	}
-</style>
+<script>
+	import { initScrollSpy } from '../scripts/scrollSpy';
+	document.addEventListener('DOMContentLoaded', initScrollSpy);
+</script>

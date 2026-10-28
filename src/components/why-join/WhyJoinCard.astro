@@ -1,0 +1,24 @@
+---
+import type { WhyJoinCardData } from '../../data/whyJoin';
+import styles from './WhyJoinCard.module.css';
+
+interface Props {
+	card: WhyJoinCardData;
+}
+
+const { card } = Astro.props;
+---
+
+<div class:list={[styles.cardWrapper, card.stagger && styles.cardStaggered]}>
+	<div class={styles.cardOuterFrame}>
+		<span
+			class={styles.cardBadge}
+			style={`background-color: ${card.badgeBg}; color: ${card.badgeColor};`}
+		>
+			{card.num}
+		</span>
+		<div class={styles.cardInnerBox}>
+			<p class={styles.cardText}>{card.text}</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+---
+import { whyJoinCards } from '../../data/whyJoin';
+import WhyJoinCard from './WhyJoinCard.astro';
+import styles from './WhyJoin.module.css';
+---
+
+<section class={styles.whyJoinSection} id="why-join">
+	<!-- Top Framing Accent Bar -->
+	<div class={styles.accentBarTop} aria-hidden="true" />
+
+	<!-- Left Framing Accent Bar -->
+	<div class={styles.accentBarLeft} aria-hidden="true">
+		<div class={styles.accentCornerSquare} />
+	</div>
+
+	<!-- Section Container -->
+	<div class={styles.whyJoinContainer}>
+		<!-- Header -->
+		<header class={styles.sectionHeader}>
+			<h2 class={styles.sectionTitle}>Why join STEM 2026?</h2>
+			<p class={styles.sectionSubtitle}>
+				Learn, build and connect with the next generation of tech innovators.
+			</p>
+		</header>
+
+		<!-- 3-Column Staggered Grid -->
+		<div class={styles.cardsGrid}>
+			{whyJoinCards.map((card) => (
+				<WhyJoinCard card={card} />
+			))}
+		</div>
+	</div>
+
+	<!-- Mascot Illustration (Front Facing) -->
+	<div class={styles.mascotContainer} aria-hidden="true">
+		<img
+			src="/illust maskot 2.png"
+			alt="STEM 2026 Front Mascot"
+			class={styles.whyJoinMascot}
+			loading="lazy"
+		/>
+	</div>
+</section>

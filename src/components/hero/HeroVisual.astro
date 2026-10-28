@@ -1,0 +1,66 @@
+---
+import styles from './HeroVisual.module.css';
+---
+
+<div class={styles.heroRight}>
+	<!-- Corner Icons -->
+	<div class:list={[styles.cornerIcon, styles.cornerTopLeft]} title="STEM Alert">
+		<img
+			src="/Warning Triangle Icon (Top Left Corner).png"
+			alt="Warning Triangle Icon"
+			width="64"
+			height="64"
+			loading="eager"
+		/>
+	</div>
+
+	<div class:list={[styles.cornerIcon, styles.cornerTopRight]} title="Drone Tech">
+		<img
+			src="/Drone Icon (Top Right Corner).png"
+			alt="Drone Network Icon"
+			width="64"
+			height="64"
+			loading="eager"
+		/>
+	</div>
+
+	<div class:list={[styles.cornerIcon, styles.cornerBottomLeft]} title="Hardware Computing">
+		<img
+			src="/Microchip Icon (Bottom Left Corner).png"
+			alt="Microchip Icon"
+			width="64"
+			height="64"
+			loading="eager"
+		/>
+	</div>
+
+	<div class:list={[styles.cornerIcon, styles.cornerBottomRight]} title="Wireless Network">
+		<img
+			src="/Signal Icon (Bottom Right Corner).png"
+			alt="Signal Wave Icon"
+			width="64"
+			height="64"
+			loading="eager"
+		/>
+	</div>
+
+	<!-- Central Stage with Keycaps and Mascot -->
+	<div class={styles.stageContainer}>
+		<div class={styles.visualStage}>
+			<img
+				src="/Isometric Keycaps Illustration Asset.png"
+				alt="STEM 2026 3D Keycaps Illustration"
+				class={styles.keycapsAsset}
+				loading="eager"
+			/>
+			<div class={styles.mascotWrapper}>
+				<img
+					src="/illust maskot 3.png"
+					alt="STEM 2026 Mascot"
+					class={styles.mascotAsset}
+					loading="eager"
+				/>
+			</div>
+		</div>
+	</div>
+</div>
