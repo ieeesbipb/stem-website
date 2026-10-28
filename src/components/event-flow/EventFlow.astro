@@ -13,7 +13,7 @@ const events = [
     <h2 id="event-flow-title" class="section-heading" data-reveal>Event Flow</h2>
     <div class="event-grid">
       {events.map((event, index) => (
-        <article class="event-card" style={`--card-color: ${event.color};`} data-col={index % 2}>
+        <article class="event-card" style={`--card-color: ${event.color};`} data-col={index % 2} data-title={event.title}>
           <span class="event-badge">{event.type}</span>
           <div class="event-titlebar">
             <div class="event-titlebar-inner">

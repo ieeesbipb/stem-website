@@ -53,10 +53,25 @@ export function initScrollSpy(): void {
 				const rect = eventFlowSection.getBoundingClientRect();
 				if (rect.bottom >= -300 && rect.top <= window.innerHeight + 300) {
 					const delta = rect.top - 80;
-					const factor = 0.1;
+					const rightFactor = 0.18;
+					const rightBase = 150;
+					const leftParallax: Record<string, { factor: number; baseOffset: number }> = {
+						'Workshop 1': { factor: 0.07, baseOffset: 48 },
+						'Seminar 3': { factor: 0.12, baseOffset: 96 },
+					};
 					eventFlowCards.forEach(card => {
 						const col = Number(card.dataset.col || 0);
-						card.style.transform = `translateY(${col * delta * factor}px)`;
+						const title = card.dataset.title || '';
+						if (col === 1) {
+							// Right column: continuous parallax
+							card.style.transform = `translateY(${rightBase + delta * rightFactor}px)`;
+						} else if (leftParallax[title]) {
+							// Left 2 cards: continuous parallax (no finish/stop), separate speeds
+							const { factor, baseOffset } = leftParallax[title];
+							card.style.transform = `translateY(${baseOffset + delta * factor}px)`;
+						} else {
+							card.style.transform = 'translateY(0px)';
+						}
 					});
 				}
 			}
