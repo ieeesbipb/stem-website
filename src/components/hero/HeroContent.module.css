@@ -1,6 +1,6 @@
 .heroLeft {
-	flex: 0 0 55%;
-	width: 55%;
+	flex: 0 0 40%;
+	width: 40%;
 	border-right: 2px solid var(--navy-dark);
 	background-color: var(--bg-light);
 	box-sizing: border-box;
@@ -15,10 +15,6 @@
 	box-sizing: border-box;
 }
 
-.overviewPane {
-	border-top: 2px solid var(--navy-dark);
-}
-
 /* Screen 1: Hero Intro */
 .heroContent {
 	max-width: 620px;
@@ -29,9 +25,9 @@
 }
 
 .titleStem {
-	font-size: clamp(4.5rem, 8.8vw, 8.8rem);
+	font-size: clamp(5.2rem, 11vw, 10.5rem);
 	font-weight: 900;
-	line-height: 0.9;
+	line-height: 0.88;
 	letter-spacing: -0.04em;
 	color: var(--navy-dark);
 	margin: 0;
@@ -39,9 +35,9 @@
 }
 
 .titleYear {
-	font-size: clamp(4.5rem, 8.8vw, 8.8rem);
+	font-size: clamp(5.2rem, 11vw, 10.5rem);
 	font-weight: 900;
-	line-height: 0.95;
+	line-height: 0.92;
 	letter-spacing: -0.04em;
 	color: var(--blue-electric);
 	margin: 0;
@@ -236,7 +232,7 @@
 	}
 
 	.titleStem, .titleYear {
-		font-size: clamp(3.4rem, 16vw, 4.8rem);
+		font-size: clamp(3.8rem, 18vw, 5.5rem);
 	}
 
 	.eventDate {
