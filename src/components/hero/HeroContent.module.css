@@ -21,6 +21,7 @@
 
 .overviewScreen {
 	padding-top: 2%;
+	margin-top: calc((100vh - 120px) * -0.18);
 }
 
 /* Screen 1: Hero Intro */
@@ -234,6 +235,10 @@
 	.screenPane {
 		min-height: auto;
 		padding: 48px var(--site-gutter);
+	}
+
+	.overviewScreen {
+		margin-top: 0;
 	}
 }
 
