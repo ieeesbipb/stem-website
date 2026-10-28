@@ -50,7 +50,7 @@
 }
 
 .navItem[data-active="yellow"] {
-	background-color: #FFD600 !important;
+	background-color: var(--accent-yellow) !important;
 	color: var(--navy-dark) !important;
 }
 

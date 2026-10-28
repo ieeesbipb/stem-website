@@ -46,6 +46,46 @@
 	letter-spacing: -0.01em;
 }
 
+/* Masked Slide-up Animation */
+.wordMask {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+	padding-bottom: 0.12em;
+	margin-bottom: -0.12em;
+}
+
+.wordMask:not(:last-child) {
+	margin-right: 0.28em;
+}
+
+.word {
+	display: inline-block;
+	transform: translateY(115%);
+	will-change: transform;
+}
+
+.sectionHeader:global(.is-visible) .word {
+	animation: slideUpWord 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	animation-delay: calc(0.06s + var(--i) * 0.065s);
+}
+
+@keyframes slideUpWord {
+	0% {
+		transform: translateY(115%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.word {
+		transform: none !important;
+		animation: none !important;
+	}
+}
+
 /* 3-Column Staggered Grid Container */
 .columnsContainer {
 	display: grid;

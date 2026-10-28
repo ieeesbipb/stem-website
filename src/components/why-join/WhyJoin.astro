@@ -8,9 +8,18 @@ import styles from './WhyJoin.module.css';
 	<!-- Section Container -->
 	<div class={styles.whyJoinContainer}>
 		<!-- Header -->
-		<header class={styles.sectionHeader}>
-			<h2 class={styles.sectionTitle}>Why join STEM 2026?</h2>
-			<p class={styles.sectionSubtitle}>
+		<header class={styles.sectionHeader} data-animate="slide-up">
+			<h2 class={styles.sectionTitle}>
+				<span class={styles.wordMask}><span class={styles.word} style="--i: 0">Why</span></span>
+				<span class={styles.wordMask}><span class={styles.word} style="--i: 1">join</span></span>
+				<span class={styles.wordMask}><span class={styles.word} style="--i: 2">STEM</span></span>
+				<span class={styles.wordMask}><span class={styles.word} style="--i: 3">2026?</span></span>
+			</h2>
+			<p
+				class={styles.sectionSubtitle}
+				data-animate="float-up"
+				style="--delay: 0.28s; --float-y: 50px;"
+			>
 				Learn, build and connect with the next generation of tech innovators.
 			</p>
 		</header>

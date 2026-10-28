@@ -1,7 +1,7 @@
 .new-section {
   --section-cream: #f3eee3;
   --section-ink: #071923;
-  --section-yellow: #ffda3e;
+  --section-yellow: #FFD516;
   position: relative;
   padding: clamp(64px, 7vw, 112px) var(--site-gutter);
   border-bottom: var(--border-dark);
@@ -26,7 +26,7 @@
 .partner-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 2px solid #33434c; border-left: 2px solid #33434c; }
 .partner-tile { grid-column: span 2; min-height: 180px; border-right: 2px solid #33434c; border-bottom: 2px solid #33434c; position: relative; display: grid; place-items: center; padding: 52px 18px 36px; }
 .partner-tile:nth-child(-n+2) { grid-column: span 3; min-height: 200px; }
-.partner-featured { background: #50d6a1; color: var(--section-ink); }
+.partner-featured { background: #56DA9F; color: var(--section-ink); }
 .partner-name { position: absolute; top: 22px; left: 20px; font: 11px 'JetBrains Mono', monospace; letter-spacing: .04em; color: #89969d; }
 .partner-featured .partner-name { color: var(--section-ink); }
 .partner-logo { font-size: clamp(22px, 2.8vw, 36px); font-weight: 800; letter-spacing: -.05em; text-align: center; }
@@ -34,7 +34,7 @@
 .section-cta { display: flex; align-items: stretch; justify-content: space-between; width: 100%; min-height: 54px; border: 2px solid var(--section-ink); background: #f9f9fb; color: var(--section-ink); font-size: 15px; font-weight: 800; cursor: pointer; list-style: none; }
 .section-cta::-webkit-details-marker { display: none; }
 .section-cta > span:first-child { flex: 1; display: flex; align-items: center; justify-content: center; padding: 12px 20px; }
-.arrow-box { display: grid; place-items: center; width: 54px; flex: 0 0 54px; background: #4d9aff; border-left: 2px solid var(--section-ink); }
+.arrow-box { display: grid; place-items: center; width: 54px; flex: 0 0 54px; background: #4EA5FF; border-left: 2px solid var(--section-ink); }
 .arrow-box svg { transition: transform .2s; }
 .section-cta:hover .arrow-box svg { transform: translate(3px, -3px); }
 .sponsor-details > p { padding: 20px; border: 1px solid #33434c; line-height: 1.7; color: #d0d7e2; }
@@ -75,14 +75,14 @@
 .register-intro > p { font-size: 15px; line-height: 1.6; max-width: 300px; }
 .register-intro img { display: block; width: 150px; height: 200px; object-fit: contain; margin-top: 28px; }
 .registration-window { grid-column: span 2; background: #fff; border: 2px solid var(--section-ink); box-shadow: 5px 5px 0 var(--section-ink); display: flex; flex-direction: column; min-width: 0; }
-.window-checkers { height: 16px; flex: 0 0 16px; border-bottom: 2px solid var(--section-ink); background: repeating-linear-gradient(90deg, transparent 0 24px, var(--section-ink) 24px 25px), linear-gradient(90deg, var(--section-cream) 8%, #4d9aff 8% 16%, var(--section-cream) 16% 48%, #ffda3e 48% 56%, var(--section-cream) 56% 80%, #50d6a1 80% 88%, var(--section-cream) 88%); }
+.window-checkers { height: 16px; flex: 0 0 16px; border-bottom: 2px solid var(--section-ink); background: repeating-linear-gradient(90deg, transparent 0 24px, var(--section-ink) 24px 25px), linear-gradient(90deg, var(--section-cream) 8%, #4EA5FF 8% 16%, var(--section-cream) 16% 48%, #FFD516 48% 56%, var(--section-cream) 56% 80%, #56DA9F 80% 88%, var(--section-cream) 88%); }
 .notify-panel { padding: 16px; background: #f7f7f7; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
 /* Leave room for Google's header, questions, and footer without nested scrolling. */
 /* Crop only the iframe's scrollbar edge; wheel, touch, and keyboard scrolling stay enabled. */
 .registration-embed-viewport { width: 100%; min-width: 0; overflow: hidden; }
 .registration-embed { display: block; width: calc(100% + 24px); max-width: none; height: 640px; border: 0; }
 .registration-fallback { align-self: center; margin-top: 12px; font-size: 12px; line-height: 1.6; text-decoration: underline; text-underline-offset: 3px; }
-.new-section :is(button, summary, iframe, a):focus-visible { outline: 3px solid #4d9aff; outline-offset: 4px; }
+.new-section :is(button, summary, iframe, a):focus-visible { outline: 3px solid #4EA5FF; outline-offset: 4px; }
 @media (max-width: 1000px) {
   .event-grid { gap: 40px; }
   .register-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
