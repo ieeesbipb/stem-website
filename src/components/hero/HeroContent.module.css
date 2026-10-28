@@ -11,65 +11,79 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 6% 8%;
+	padding: 4% 8%;
 	box-sizing: border-box;
 }
 
-.overviewPane {
-	border-top: 2px solid var(--navy-dark);
+.heroScreen {
+	padding-bottom: 2%;
+}
+
+.overviewScreen {
+	padding-top: 2%;
 }
 
 /* Screen 1: Hero Intro */
 .heroContent {
-	max-width: 620px;
+	max-width: 680px;
+	width: 100%;
+}
+
+.heroHeaderBlock {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	max-width: 100%;
 }
 
 .titleGroup {
-	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1.25rem;
+	width: fit-content;
 }
 
-.titleStem {
-	font-size: clamp(4.5rem, 8.8vw, 8.8rem);
-	font-weight: 900;
-	line-height: 0.9;
+.titleMain {
+	font-family: var(--font-heading);
+	font-size: clamp(3.2rem, 6.2vw, 6.2rem);
+	font-weight: 700;
+	line-height: 1.02;
 	letter-spacing: -0.04em;
 	color: var(--navy-dark);
 	margin: 0;
-	text-transform: uppercase;
+	white-space: nowrap;
 }
 
-.titleYear {
-	font-size: clamp(4.5rem, 8.8vw, 8.8rem);
-	font-weight: 900;
-	line-height: 0.95;
+.titleSub {
+	font-family: var(--font-heading);
+	font-size: clamp(3.2rem, 6.2vw, 6.2rem);
+	font-weight: 400;
+	line-height: 1.02;
 	letter-spacing: -0.04em;
-	color: var(--blue-electric);
-	margin: 0;
-}
-
-.metaGroup {
-	margin-bottom: 2.5rem;
-}
-
-.eventDate {
-	font-size: 1.35rem;
-	font-weight: 800;
 	color: var(--navy-dark);
-	letter-spacing: -0.01em;
-	margin-bottom: 0.4rem;
+	margin: 0.1em 0 0 0;
+	white-space: nowrap;
+}
+
+.actionRow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	gap: 1.5rem;
 }
 
 .targetAudience {
-	font-size: 1.05rem;
+	font-size: 1.08rem;
+	font-style: italic;
 	font-weight: 600;
 	color: var(--navy-dark);
-	opacity: 0.9;
-	letter-spacing: -0.01em;
-}
-
-.ctaWrapper {
-	display: flex;
-	align-items: center;
+	letter-spacing: -0.015em;
+	margin: 0;
+	text-align: right;
+	max-width: 290px;
+	line-height: 1.35;
+	text-wrap: balance;
 }
 
 /* Neo-brutalist Buttons */
@@ -130,13 +144,13 @@
 
 /* Screen 2: Overview Content */
 .overviewContent {
-	max-width: 520px;
+	max-width: 680px;
 	width: 100%;
 }
 
 .overviewLead {
 	color: var(--navy-dark);
-	font-size: 1.05rem;
+	font-size: 1.15rem;
 	font-weight: 700;
 	line-height: 1.55;
 	margin-bottom: 1.25rem;
@@ -145,18 +159,11 @@
 
 .overviewTheme {
 	color: var(--blue-electric);
-	font-size: 1.05rem;
+	font-size: 1.15rem;
 	font-weight: 700;
 	line-height: 1.55;
-	margin-bottom: 1.5rem;
+	margin-bottom: 2rem;
 	letter-spacing: -0.01em;
-}
-
-.overviewDivider {
-	border: none;
-	border-top: 1.5px solid #E2E5EC;
-	width: 100%;
-	margin-bottom: 1.25rem;
 }
 
 .timelineList {
@@ -236,7 +243,7 @@
 	}
 
 	.titleStem, .titleYear {
-		font-size: clamp(3.4rem, 16vw, 4.8rem);
+		font-size: clamp(3.8rem, 18vw, 5.5rem);
 	}
 
 	.eventDate {

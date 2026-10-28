@@ -68,14 +68,16 @@
 }
 
 .topRight {
-	width: 220px;
-	min-width: 200px;
+	width: auto;
+	padding: 0 24px;
+	min-width: 240px;
 	background-color: var(--navy-dark);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-left: 2px solid var(--navy-dark);
 	user-select: none;
+	white-space: nowrap;
 }
 
 .dateTag {

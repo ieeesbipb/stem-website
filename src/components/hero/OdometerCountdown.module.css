@@ -1,0 +1,91 @@
+.countdownBox {
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+	border: 1.5px solid var(--navy-dark);
+	background: transparent;
+	margin-bottom: 3.25rem;
+	box-sizing: border-box;
+}
+
+.segment {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 8px 8px;
+	gap: 4px;
+	box-sizing: border-box;
+	border-right: 1.5px solid var(--navy-dark);
+}
+
+.segment:last-child {
+	border-right: none;
+}
+
+.sideLabel {
+	font-family: var(--font-heading);
+	font-size: 0.72rem;
+	font-weight: 700;
+	color: var(--navy-dark);
+	opacity: 0.6;
+	line-height: 1;
+	user-select: none;
+	margin-top: 1px;
+}
+
+.dateSegment {
+	flex: 0 0 auto;
+	padding: 8px 18px;
+}
+
+.dateSlotValue {
+	height: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: var(--font-heading);
+	font-size: 1.05rem;
+	font-weight: 500;
+	color: var(--navy-dark);
+	letter-spacing: -0.01em;
+	white-space: nowrap;
+	line-height: 1;
+}
+
+.digitPair {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0;
+}
+
+.digitSlot {
+	position: relative;
+	width: 12px;
+	height: 22px;
+	overflow: hidden;
+}
+
+.digitTrack {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	will-change: transform;
+}
+
+.digitItem {
+	height: 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.05rem;
+	font-weight: 700;
+	font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+	color: var(--navy-dark);
+	line-height: 1;
+}

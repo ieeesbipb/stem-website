@@ -28,6 +28,11 @@ import styles from './index.module.css';
 <script>
 	import { initScrollSpy } from '../scripts/scrollSpy';
 	import { initScrollAnimations } from '../scripts/scrollAnimations';
-	document.addEventListener('DOMContentLoaded', initScrollSpy);
-	document.addEventListener('DOMContentLoaded', initScrollAnimations);
+	import { initCountdown } from '../scripts/countdown';
+
+	document.addEventListener('DOMContentLoaded', () => {
+		initScrollSpy();
+		initScrollAnimations();
+		initCountdown();
+	});
 </script>
