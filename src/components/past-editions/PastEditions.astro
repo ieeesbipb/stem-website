@@ -1,0 +1,30 @@
+---
+import Arrow from '../shared/Arrow.astro';
+---
+<section id="past-editions" class="past-editions new-section" aria-labelledby="past-title">
+  <div class="section-inner">
+    <header class="centered-heading" data-reveal>
+      <h2 id="past-title" class="section-heading">Past editions of STEM</h2>
+      <p>Relive the themes and moments of previous STEM events.</p>
+    </header>
+    <div class="edition-grid">
+      <article class="edition-card" data-reveal>
+        <span class="edition-badge">2025</span>
+        <div class="edition-collage" aria-label="STEM 2025 photo collage">
+          {Array.from({ length: 10 }, (_, i) => (
+            <div class="edition-photo" role="img" aria-label={`STEM 2025 photo ${i + 1} coming soon`}>
+              <span>Photo</span>
+            </div>
+          ))}
+        </div>
+        <p class="edition-description">STEM 2025 explored the theme “Preparing Young Generation Resources for an Inclusive and Just Clean Energy Transition” at Auditorium GMSK, IPB University.</p>
+        <div class="edition-footer">
+        <p class="edition-meta">8 November 2025, IPB University</p>
+        <a class="edition-more section-cta dark-cta" href="https://instagram.com/stem.ipb" target="_blank" rel="noopener noreferrer" aria-label="View more from STEM on Instagram (opens in a new tab)">
+          <span>View more</span><span class="arrow-box"><Arrow /></span>
+        </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

@@ -4,6 +4,11 @@ import TopBar from '../components/navigation/TopBar.astro';
 import Navbar from '../components/navigation/Navbar.astro';
 import Hero from '../components/hero/Hero.astro';
 import WhyJoin from '../components/why-join/WhyJoin.astro';
+import EventFlow from '../components/event-flow/EventFlow.astro';
+import Partners from '../components/partners/Partners.astro';
+import PastEditions from '../components/past-editions/PastEditions.astro';
+import Register from '../components/register/Register.astro';
+import '../styles/sections.css';
 import styles from './index.module.css';
 ---
 
@@ -12,11 +17,17 @@ import styles from './index.module.css';
 	<main class={styles.pageContainer}>
 		<Hero />
 		<WhyJoin />
+		<EventFlow />
+		<Partners />
+		<PastEditions />
+		<Register />
 	</main>
 	<Navbar />
 </Layout>
 
 <script>
 	import { initScrollSpy } from '../scripts/scrollSpy';
+	import { initScrollAnimations } from '../scripts/scrollAnimations';
 	document.addEventListener('DOMContentLoaded', initScrollSpy);
+	document.addEventListener('DOMContentLoaded', initScrollAnimations);
 </script>

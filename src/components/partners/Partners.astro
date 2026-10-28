@@ -1,0 +1,19 @@
+---
+import Arrow from '../shared/Arrow.astro';
+---
+<section id="partners" class="partners new-section" aria-labelledby="partners-title">
+  <div class="section-inner partner-inner">
+    <h2 id="partners-title" class="section-heading" data-reveal>Partners</h2>
+    <div class="partner-grid" aria-label="Partners to be announced">
+      {Array.from({ length: 5 }, (_, i) => (
+        <div class:list={['partner-tile', { 'partner-featured': i === 0 }]} data-reveal style={`--reveal-delay: ${i * 65}ms`}>
+          <span class="partner-name">Partner Name</span><span class="partner-logo">Partner Logo</span>
+        </div>
+      ))}
+    </div>
+    <details class="sponsor-details" data-reveal>
+      <summary class="section-cta"><span>Become a sponsor</span><span class="arrow-box"><Arrow /></span></summary>
+      <p>Sponsorship opportunities and contact details will be announced soon. Stay tuned for updates from STEM 2026.</p>
+    </details>
+  </div>
+</section>

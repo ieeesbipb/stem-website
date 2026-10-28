@@ -1,0 +1,28 @@
+---
+const events = [
+  { title: 'Seminar 1', type: 'Seminar', color: '#ffda3e', image: 1 },
+  { title: 'Seminar 2', type: 'Seminar', color: '#50d6a1', image: 3 },
+  { title: 'Workshop 1', type: 'Workshop', color: '#4d9aff', image: 2 },
+  { title: 'Workshop 2', type: 'Workshop', color: '#e5caf7', image: 1 },
+  { title: 'Seminar 3', type: 'Seminar', color: '#ff6a28', image: 3 },
+  { title: 'Closing', type: 'Closing', color: '#ffda3e', image: 2 },
+];
+---
+<section id="event-flow" class="event-flow new-section" aria-labelledby="event-flow-title">
+  <div class="section-inner flow-inner">
+    <h2 id="event-flow-title" class="section-heading" data-reveal>Event Flow</h2>
+    <div class="event-grid">
+      {events.map((event, index) => (
+        <article class="event-card" style={`--card-color: ${event.color}; --reveal-delay: ${(index % 2) * 100}ms`} data-reveal>
+          <span class="event-badge">{event.type}</span>
+          <div class="event-titlebar"><h3><span aria-hidden="true">→</span>{event.title}</h3></div>
+          <div class="event-illustration">
+            <span class="event-number" aria-hidden="true">0{index + 1}</span>
+            <img src={`/illust maskot ${event.image}.png`} alt="" loading="lazy" width="160" height="190" data-parallax />
+          </div>
+          <div class="event-description"><p>Topic to be announced.</p><p>Time: TBA</p></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,59 +1,47 @@
 export function initScrollSpy(): void {
 	const topBar = document.querySelector<HTMLElement>('[data-top-bar]');
-	const navOverview = document.getElementById('nav-overview');
-	const navWhyJoin = document.getElementById('nav-why-join');
-	const whyJoinSection = document.getElementById('why-join');
-	const heroSection = document.getElementById('hero');
-	const overviewSection = document.getElementById('overview');
-	const brandLink = document.querySelector<HTMLElement>('[data-brand-link]');
+	const links = [...document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]')];
+	const sections = [...document.querySelectorAll<HTMLElement>('#hero, #overview, #why-join, #event-flow, #partners, #past-editions, #register')];
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-	// Smooth click navigation
-	if (navOverview && overviewSection) {
-		navOverview.addEventListener('click', (e) => {
-			e.preventDefault();
-			overviewSection.scrollIntoView({ behavior: 'smooth' });
+	// Keep the existing navigation design; connect its links to the new sections.
+	const brandLink = document.querySelector<HTMLAnchorElement>('[data-brand-link]');
+	[...links, ...(brandLink ? [brandLink] : [])].forEach(link => {
+		const id = link === brandLink ? 'hero' : link.hash.slice(1);
+		const target = document.getElementById(id);
+		if (!target) return;
+		link.addEventListener('click', event => {
+			if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+			event.preventDefault();
+			history.replaceState(null, '', `#${id}`);
+			target.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth' });
 		});
-	}
+	});
 
-	if (navWhyJoin && whyJoinSection) {
-		navWhyJoin.addEventListener('click', (e) => {
-			e.preventDefault();
-			whyJoinSection.scrollIntoView({ behavior: 'smooth' });
-		});
-	}
-
-	if (brandLink && heroSection) {
-		brandLink.addEventListener('click', (e) => {
-			e.preventDefault();
-			heroSection.scrollIntoView({ behavior: 'smooth' });
-		});
-	}
-
-	// Scroll Observer for active tab and top-bar dark mode
-	if (whyJoinSection && navOverview && navWhyJoin) {
-		const updateStateOnScroll = () => {
-			const rect = whyJoinSection.getBoundingClientRect();
-			// If why-join top is near or above the middle of viewport
-			const inWhyJoin = rect.top <= 200 && rect.bottom > 150;
-
-			if (inWhyJoin) {
-				// Why Join active state
-				navOverview.removeAttribute('data-active');
-				navOverview.removeAttribute('aria-current');
-				navWhyJoin.setAttribute('data-active', 'yellow');
-				navWhyJoin.setAttribute('aria-current', 'page');
-				if (topBar) topBar.setAttribute('data-theme', 'dark');
+	function update() {
+		let current = sections[0];
+		for (const section of sections) {
+			if (section.getBoundingClientRect().top <= 200) current = section;
+		}
+		const id = current?.id === 'hero' ? 'overview' : current?.id;
+		links.forEach(link => {
+			if (link.id.startsWith('nav-') && link.hash === `#${id}`) {
+				link.dataset.active = id === 'why-join' ? 'yellow' : 'blue';
+				link.setAttribute('aria-current', 'location');
 			} else {
-				// Overview / Hero active state
-				navWhyJoin.removeAttribute('data-active');
-				navWhyJoin.removeAttribute('aria-current');
-				navOverview.setAttribute('data-active', 'blue');
-				navOverview.setAttribute('aria-current', 'page');
-				if (topBar) topBar.removeAttribute('data-theme');
+				link.removeAttribute('data-active');
+				link.removeAttribute('aria-current');
 			}
-		};
-
-		window.addEventListener('scroll', updateStateOnScroll, { passive: true });
-		updateStateOnScroll();
+		});
+		if (id === 'why-join' || id === 'partners') topBar?.setAttribute('data-theme', 'dark');
+		else topBar?.removeAttribute('data-theme');
 	}
+	let scheduled = false;
+	window.addEventListener('scroll', () => {
+		if (scheduled) return;
+		scheduled = true;
+		requestAnimationFrame(() => { scheduled = false; update(); });
+	}, { passive: true });
+	window.addEventListener('resize', update);
+	update();
 }
