@@ -97,6 +97,32 @@ export function initScrollSpy(): void {
 		else topBar?.removeAttribute('data-theme');
 		updateParallax();
 	}
+
+	// Global scroll-triggered animations (e.g. data-animate="float-up")
+	const animElements = [...document.querySelectorAll<HTMLElement>('[data-animate]')];
+	if (animElements.length) {
+		const animObserver = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						animObserver.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+		);
+
+		animElements.forEach((el) => {
+			const rect = el.getBoundingClientRect();
+			if (rect.top < window.innerHeight && rect.bottom > 0) {
+				el.classList.add('is-visible');
+			} else {
+				animObserver.observe(el);
+			}
+		});
+	}
+
 	let scheduled = false;
 	function schedule() {
 		if (scheduled) return;

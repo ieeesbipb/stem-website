@@ -66,6 +66,42 @@
 	white-space: nowrap;
 }
 
+.wordMask {
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: bottom;
+	padding-bottom: 0.14em;
+	margin-bottom: -0.14em;
+}
+
+.titleGroup .wordMask:not(:last-child) {
+	margin-right: 0.28em;
+}
+
+.word {
+	display: inline-block;
+	transform: translateY(115%);
+	animation: slideUpWord 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	animation-delay: calc(0.1s + var(--i) * 0.065s);
+	will-change: transform;
+}
+
+@keyframes slideUpWord {
+	0% {
+		transform: translateY(115%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.word {
+		transform: none;
+		animation: none;
+	}
+}
+
 .actionRow {
 	display: flex;
 	align-items: center;
@@ -149,47 +185,30 @@
 	width: 100%;
 }
 
+.overviewBlock {
+	margin-bottom: 1.6rem;
+}
+
+.overviewHeading {
+	font-family: var(--font-heading);
+	font-size: 1.35rem;
+	font-weight: 700;
+	line-height: 1.25;
+	letter-spacing: -0.025em;
+	color: var(--navy-dark);
+	margin: 0 0 0.45rem 0;
+}
+
 .overviewLead {
 	color: var(--navy-dark);
-	font-size: 1.15rem;
-	font-weight: 700;
-	line-height: 1.55;
-	margin-bottom: 1.25rem;
+	font-size: 1.05rem;
+	font-weight: 400;
+	line-height: 1.6;
 	letter-spacing: -0.01em;
-}
-
-.overviewTheme {
-	color: var(--blue-electric);
-	font-size: 1.15rem;
-	font-weight: 700;
-	line-height: 1.55;
-	margin-bottom: 2rem;
-	letter-spacing: -0.01em;
-}
-
-.timelineList {
-	list-style: none;
-	padding: 0;
-	margin: 0 0 2.25rem 0;
-	display: flex;
-	flex-direction: column;
-	gap: 0.6rem;
-	color: var(--navy-dark);
-	font-size: 0.9rem;
-	font-weight: 700;
-}
-
-.timelineList li {
-	display: flex;
-	align-items: center;
-}
-
-.timelineList li::before {
-	content: "•";
-	color: var(--navy-dark);
-	margin-right: 0.6rem;
-	font-size: 1.15rem;
-	line-height: 1;
+	margin: 0;
+	text-align: justify;
+	text-justify: inter-word;
+	hyphens: auto;
 }
 
 .overviewActions {
@@ -239,6 +258,11 @@
 
 	.overviewScreen {
 		margin-top: 0;
+	}
+
+	.overviewLead {
+		text-align: left;
+		text-justify: auto;
 	}
 }
 

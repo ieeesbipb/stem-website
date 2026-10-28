@@ -9,13 +9,21 @@ import styles from './HeroContent.module.css';
 		<div class={styles.heroContent}>
 			<div class={styles.heroHeaderBlock}>
 				<div class={styles.titleGroup}>
-					<h1 class={styles.titleMain}>STEM 2026</h1>
-					<div class={styles.titleSub}>by IEEE SB IPB</div>
+					<h1 class={styles.titleMain}>
+						<span class={styles.wordMask}><span class={styles.word} style="--i: 0">STEM</span></span>
+						<span class={styles.wordMask}><span class={styles.word} style="--i: 1">2026</span></span>
+					</h1>
+					<div class={styles.titleSub}>
+						<span class={styles.wordMask}><span class={styles.word} style="--i: 2">by</span></span>
+						<span class={styles.wordMask}><span class={styles.word} style="--i: 3">IEEE</span></span>
+						<span class={styles.wordMask}><span class={styles.word} style="--i: 4">SB</span></span>
+						<span class={styles.wordMask}><span class={styles.word} style="--i: 5">IPB</span></span>
+					</div>
 				</div>
 
 				<OdometerCountdown dateText="22 November 2026" />
 
-				<div class={styles.actionRow}>
+				<div class:list={[styles.actionRow, 'float-up']} style="--delay: 0.38s; --float-y: 60px;">
 					<a href="#register" class={styles.heroBtn} id="hero-register-btn">
 						<span class={styles.btnText}>Register Now</span>
 						<span class={styles.btnIcon} aria-hidden="true">
@@ -26,7 +34,9 @@ import styles from './HeroContent.module.css';
 						</span>
 					</a>
 
-					<p class={styles.targetAudience}>For High School students and 1st year of University</p>
+					<p class={styles.targetAudience}>
+						For High School students and 1st year of University
+					</p>
 				</div>
 			</div>
 		</div>
@@ -35,33 +45,23 @@ import styles from './HeroContent.module.css';
 	<!-- Screen 2: Overview Content -->
 	<section class:list={[styles.screenPane, styles.overviewScreen]} id="overview">
 		<div class={styles.overviewContent}>
-			<p class={styles.overviewLead}>
-				STEM 2026 is a flagship program of IEEE Student Branch IPB University, built to foster knowledge and technological engineering for real-world applications.
-			</p>
+			<div class={styles.overviewBlock} data-animate="float-up" style="--delay: 0s; --float-y: 90px;">
+				<h2 class={styles.overviewHeading}>What is STEM 2026?</h2>
+				<p class={styles.overviewLead}>
+					STEM 2026 is a flagship program of IEEE Student Branch IPB University, built to foster knowledge and technological engineering for real-world applications.
+				</p>
+			</div>
 
-			<p class={styles.overviewTheme}>
-				This year's theme, From Reactive to Proactive, explores how IoT can help Indonesia prepare for natural disasters before they happen.
-			</p>
+			<div class={styles.overviewBlock} data-animate="float-up" style="--delay: 0.16s; --float-y: 90px;">
+				<h2 class={styles.overviewHeading}>“From Reactive to Proactive”</h2>
+				<p class={styles.overviewLead}>
+					This year's theme focuses on shifting from post-disaster response to proactive risk reduction. Through Internet of Things (IoT) technologies, smart sensor networks, and early warning systems, participants are challenged to develop practical engineering solutions that help Indonesia predict, monitor, and mitigate natural disasters before they strike.
+				</p>
+			</div>
 
-			<ul class={styles.timelineList}>
-				<li>Registration opens: TBA</li>
-				<li>Registration closes: TBA</li>
-				<li>Main event: TBA</li>
-			</ul>
-
-			<div class={styles.overviewActions}>
+			<div class={styles.overviewActions} data-animate="float-up" style="--delay: 0.32s; --float-y: 70px;">
 				<a href="#guidebook" class={styles.guidebookBtn} id="download-guidebook-btn">
 					Download Guidebook
-				</a>
-
-				<a href="#register" class={styles.heroBtn} id="overview-register-btn">
-					<span class={styles.btnText}>Register Now</span>
-					<span class={styles.btnIcon} aria-hidden="true">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square">
-							<path d="M7 17L17 7" />
-							<path d="M7 7h10v10" />
-						</svg>
-					</span>
 				</a>
 			</div>
 		</div>

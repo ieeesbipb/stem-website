@@ -1,0 +1,85 @@
+:root {
+	/* Reusable easing curves */
+	--ease-long-trail: cubic-bezier(0.05, 0.75, 0.1, 1);
+	--ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 
+ * Float Up:
+ * - Opacity on fast linear curve
+ * - Blur on smooth ease
+ * - Translation on long trailing ease-out
+ */
+@keyframes floatOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes floatBlur {
+	0% {
+		filter: blur(var(--float-blur, 8px));
+	}
+	100% {
+		filter: blur(0px);
+	}
+}
+
+@keyframes floatMove {
+	0% {
+		transform: translateY(var(--float-y, 80px));
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+/* Reusable scroll-triggered float up */
+[data-animate="float-up"] {
+	opacity: 0;
+	filter: blur(var(--float-blur, 8px));
+	transform: translateY(var(--float-y, 80px));
+	will-change: transform, opacity, filter;
+}
+
+[data-animate="float-up"].is-visible {
+	animation:
+		floatOpacity var(--fade-duration, 0.28s) linear var(--delay, 0s) both,
+		floatBlur var(--blur-duration, 0.55s) ease var(--delay, 0s) both,
+		floatMove var(--float-duration, 1.3s) var(--ease-long-trail) var(--delay, 0s) both;
+}
+
+.float-up,
+.animate-float-up {
+	opacity: 0;
+	filter: blur(var(--float-blur, 8px));
+	transform: translateY(var(--float-y, 80px));
+	animation:
+		floatOpacity var(--fade-duration, 0.28s) linear var(--delay, 0s) both,
+		floatBlur var(--blur-duration, 0.55s) ease var(--delay, 0s) both,
+		floatMove var(--float-duration, 1.3s) var(--ease-long-trail) var(--delay, 0s) both;
+	will-change: transform, opacity, filter;
+}
+
+/* Masked word slide-up */
+@keyframes slideUpWord {
+	0% {
+		transform: translateY(115%);
+	}
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.float-up,
+	.animate-float-up {
+		animation: none !important;
+		opacity: 1 !important;
+		filter: none !important;
+		transform: none !important;
+	}
+}

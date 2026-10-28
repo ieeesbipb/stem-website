@@ -13,6 +13,7 @@
 	--font-heading: 'TWK Everett', 'Plus Jakarta Sans', system-ui, sans-serif;
 	--font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	--font-mono: 'TWK Everett Mono', 'JetBrains Mono', monospace;
+	--font-fancy: 'TWK Everett', 'Plus Jakarta Sans', system-ui, sans-serif;
 
 	/* Layout */
 	--site-gutter: clamp(32px, 6vw, 112px);
