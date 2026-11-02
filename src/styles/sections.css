@@ -61,6 +61,7 @@
 .edition-photo:nth-child(9) { grid-area: 2 / 4 / 3 / 5; }
 .edition-photo:nth-child(10) { grid-area: 3 / 4 / 4 / 5; }
 .edition-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+[data-photo-reveal] .edition-photo { opacity: 0; will-change: transform, opacity, clip-path; }
 .edition-description { font-size: 17px; line-height: 1.45; letter-spacing: -.025em; margin-bottom: 12px; }
 .edition-footer { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
 .edition-meta { font-size: 17px; line-height: 1.5; font-weight: 800; letter-spacing: -.035em; }
@@ -133,4 +134,5 @@
   html { scroll-behavior: auto; }
   [data-parallax] { transform: none !important; }
   .arrow-box svg { transition: none; }
+  [data-photo-reveal] .edition-photo { opacity: 1; }
 }

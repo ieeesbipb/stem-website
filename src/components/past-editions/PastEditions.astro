@@ -12,19 +12,19 @@ const photos2025 = Array.from({ length: 10 }, (_, i) =>
       <p>Relive the themes and moments of previous STEM events.</p>
     </header>
     <div class="edition-grid">
-      <article class="edition-card" data-reveal data-cursor-text="Rewind to 2025 ⏪">
-        <span class="edition-badge">2025</span>
-        <div class="edition-collage" aria-label="STEM 2025 photo collage">
+      <article class="edition-card" data-cursor-text="Rewind to 2025 ⏪">
+        <span class="edition-badge" data-reveal style="--reveal-delay: 0ms">2025</span>
+        <div class="edition-collage" data-photo-reveal aria-label="STEM 2025 photo collage">
           {photos2025.map((src, i) => (
-            <div class="edition-photo">
+            <div class="edition-photo" style={`--photo-i: ${i}`}>
               <img src={src} alt={`STEM 2025 photo ${i + 1}`} loading="lazy" decoding="async" />
             </div>
           ))}
         </div>
-        <p class="edition-description">STEM 2025 explored the theme “Preparing Young Generation Resources for an Inclusive and Just Clean Energy Transition” at Auditorium GMSK, IPB University.</p>
-        <div class="edition-footer">
+        <p class="edition-description" data-reveal style="--reveal-delay: 600ms">STEM 2025 explored the theme &ldquo;Preparing Young Generation Resources for an Inclusive and Just Clean Energy Transition&rdquo; at Auditorium GMSK, IPB University.</p>
+        <div class="edition-footer" data-reveal style="--reveal-delay: 750ms">
           <p class="edition-meta">8 November 2025, IPB University</p>
-          <a class="edition-more section-cta dark-cta" data-cursor-text="Rewind to 2025 ⏪" href="https://instagram.com/stem.ipb" target="_blank" rel="noopener noreferrer" aria-label="View more from STEM on Instagram (opens in a new tab)" data-cursor-text="Rewind to 2025 ⏪">
+          <a class="edition-more section-cta dark-cta" data-cursor-text="Rewind to 2025 ⏪" href="https://instagram.com/stem.ipb" target="_blank" rel="noopener noreferrer" aria-label="View more from STEM on Instagram (opens in a new tab)">
             <span>View more</span><span class="arrow-box"><Arrow /></span>
           </a>
         </div>
@@ -32,3 +32,49 @@ const photos2025 = Array.from({ length: 10 }, (_, i) =>
     </div>
   </div>
 </section>
+
+<script>
+  function initPhotoReveal() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const collages = document.querySelectorAll<HTMLElement>('[data-photo-reveal]');
+    if (!collages.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const collage = entry.target as HTMLElement;
+        const photos = collage.querySelectorAll<HTMLElement>('.edition-photo');
+
+        photos.forEach((photo, i) => {
+          const delay = 80 + i * 90; // stagger: 80ms base + 90ms per photo
+          photo.animate([
+            {
+              opacity: 0,
+              transform: 'scale(0.7) rotate(-3deg)',
+              clipPath: 'inset(8% 8% 8% 8% round 4px)',
+            },
+            {
+              opacity: 1,
+              transform: 'scale(1) rotate(0deg)',
+              clipPath: 'inset(0% 0% 0% 0% round 0px)',
+            },
+          ], {
+            duration: 650,
+            delay,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+            fill: 'both',
+          });
+        });
+
+        observer.unobserve(collage);
+      }
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    collages.forEach(c => observer.observe(c));
+  }
+
+  // Init on load + Astro View Transitions
+  initPhotoReveal();
+  document.addEventListener('astro:page-load', initPhotoReveal);
+</script>
