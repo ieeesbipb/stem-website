@@ -1,0 +1,175 @@
+---
+/**
+ * CustomCursor.astro
+ * Neo-Brutalist custom cursor — SVG arrow + pill badge.
+ * Three states: default, hover, active.
+ * Desktop-only (pointer: fine). Disabled on touch.
+ */
+---
+
+<div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+  <svg
+    class="cursor-arrow"
+    width="24"
+    height="28"
+    viewBox="0 0 24 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M2 2L10 26L13 16L22 12L2 2Z"
+      fill="var(--cursor-fill, #3B82F6)"
+      stroke="var(--cursor-stroke, #0B1320)"
+      stroke-width="2.2"
+      stroke-linejoin="round"
+    />
+  </svg>
+  <span class="cursor-badge">Tech Innovator</span>
+</div>
+
+<style>
+  @media (pointer: coarse) {
+    .custom-cursor { display: none !important; }
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-start;
+    opacity: 0;
+    will-change: transform;
+    transition: opacity 0.2s ease;
+  }
+
+  .custom-cursor.is-visible {
+    opacity: 1;
+  }
+
+  .cursor-arrow {
+    flex-shrink: 0;
+    filter: drop-shadow(2px 2px 0px #0B1320);
+    transition: transform 0.1s ease;
+  }
+
+  .cursor-badge {
+    margin-left: 14px;
+    margin-top: -4px;
+    padding: 4px 12px;
+    font-family: 'JetBrains Mono', 'TWK Everett Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: 9999px;
+    border: 2px solid #0B1320;
+    box-shadow: 3px 3px 0px #0B1320;
+    background: #2B88D8;
+    color: #FFFFFF;
+    transition: background 0.1s ease, color 0.1s ease, border-color 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  /* Hover */
+  .custom-cursor.is-hover .cursor-arrow {
+    --cursor-fill: #FACC15;
+    --cursor-stroke: #0B1320;
+    transform: scale(1.05);
+  }
+  .custom-cursor.is-hover .cursor-badge {
+    background: #FACC15;
+    color: #0B1320;
+    border-color: #0B1320;
+    transform: scale(1.05);
+  }
+
+  /* Active / Click */
+  .custom-cursor.is-active .cursor-arrow {
+    --cursor-fill: #0B1320;
+    --cursor-stroke: #10B981;
+    filter: drop-shadow(2px 2px 0px #10B981);
+    transform: scale(0.95);
+  }
+  .custom-cursor.is-active .cursor-badge {
+    background: #0B1320;
+    color: #34D399;
+    border-color: #10B981;
+    box-shadow: 3px 3px 0px #10B981;
+    transform: scale(0.95);
+  }
+</style>
+
+<script>
+  /** Singleton guard — prevents duplicate listeners across view transitions */
+  if (!(window as any).__customCursorInit) {
+    (window as any).__customCursorInit = true;
+
+    const isFine = window.matchMedia('(pointer: fine)').matches;
+    if (isFine) {
+      /* ── Hide native cursor ── */
+      const s = document.createElement('style');
+      s.id = 'custom-cursor-hide-native';
+      s.textContent = `@media(pointer:fine){body,a,button,[role="button"],[data-cursor-text]{cursor:none!important}}`;
+      document.head.appendChild(s);
+
+      const el = document.getElementById('custom-cursor')!;
+      const badge = el.querySelector('.cursor-badge') as HTMLSpanElement;
+
+      const DEFAULT = 'Tech Innovator';
+      const HOVER   = 'JOIN STEM 2026 ↗';
+      const ACTIVE  = 'Mitigate Now ⚡';
+      const SEL     = 'a,button,[role="button"],[data-cursor-text]';
+
+      let overEl: Element | null = null;
+
+      /* ── Direct position — no lerp, no lag ── */
+      document.addEventListener('mousemove', (e) => {
+        el.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0)`;
+        if (!el.classList.contains('is-visible')) el.classList.add('is-visible');
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', () => el.classList.remove('is-visible'));
+      document.addEventListener('mouseenter', () => el.classList.add('is-visible'));
+
+      /* ── Click ── */
+      document.addEventListener('mousedown', () => {
+        el.classList.add('is-active');
+        badge.textContent = overEl?.getAttribute('data-cursor-text') || ACTIVE;
+      });
+
+      document.addEventListener('mouseup', () => {
+        el.classList.remove('is-active');
+        if (overEl) {
+          badge.textContent = overEl.getAttribute('data-cursor-text') || HOVER;
+        } else {
+          badge.textContent = DEFAULT;
+        }
+      });
+
+      /* ── Hover interactive elements ── */
+      document.addEventListener('pointerover', (e) => {
+        const t = (e.target as Element).closest?.(SEL);
+        if (!t) return;
+        overEl = t;
+        if (t.getAttribute('data-cursor-state') === 'active') {
+          el.classList.remove('is-hover');
+          el.classList.add('is-active');
+          badge.textContent = t.getAttribute('data-cursor-text') || ACTIVE;
+        } else {
+          el.classList.add('is-hover');
+          el.classList.remove('is-active');
+          badge.textContent = t.getAttribute('data-cursor-text') || HOVER;
+        }
+      });
+
+      document.addEventListener('pointerout', (e) => {
+        const t = (e.target as Element).closest?.(SEL);
+        if (!t) return;
+        overEl = null;
+        el.classList.remove('is-hover', 'is-active');
+        badge.textContent = DEFAULT;
+      });
+    }
+  }
+</script>
