@@ -10,5 +10,5 @@
 }
 
 @media (max-width: 640px) {
-  .pageContainer { padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)); }
+  .pageContainer { padding-bottom: env(safe-area-inset-bottom, 0px); }
 }

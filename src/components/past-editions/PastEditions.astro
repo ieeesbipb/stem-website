@@ -8,13 +8,13 @@ const photos2025 = Array.from({ length: 10 }, (_, i) =>
 <section id="past-editions" class="past-editions new-section" aria-labelledby="past-title">
   <div class="section-inner">
     <header class="centered-heading" data-reveal>
-      <h2 id="past-title" class="section-heading">Past editions of STEM</h2>
-      <p>Relive the themes and moments of previous STEM events.</p>
+      <h2 id="past-title" class="section-heading">Kilas Balik STEM</h2>
+      <p>Kenang kembali tema dan momen dari penyelenggaraan STEM sebelumnya.</p>
     </header>
     <div class="edition-grid">
-      <article class="edition-card" data-cursor-text="Rewind to 2025 ⏪">
+      <article class="edition-card" data-cursor-text="Kilas Balik 2025 ⏪">
         <span class="edition-badge" data-reveal style="--reveal-delay: 0ms">2025</span>
-        <div class="edition-collage" data-photo-reveal aria-label="STEM 2025 photo collage">
+        <div class="edition-collage" data-photo-reveal aria-label="Kolase foto STEM 2025">
           {photos2025.map((src, i) => (
             <div class="edition-photo" style={`--photo-i: ${i}`}>
               <img
@@ -23,67 +23,21 @@ const photos2025 = Array.from({ length: 10 }, (_, i) =>
                 sizes="(max-width: 640px) 70vw, (max-width: 1024px) 40vw, 30vw"
                 width="1280"
                 height="853"
-                alt={`STEM 2025 photo ${i + 1}`}
+                alt={`Foto STEM 2025 ke-${i + 1}`}
                 loading="lazy"
                 decoding="async"
               />
             </div>
           ))}
         </div>
-        <p class="edition-description" data-reveal style="--reveal-delay: 600ms">STEM 2025 explored the theme &ldquo;Preparing Young Generation Resources for an Inclusive and Just Clean Energy Transition&rdquo;</p>
+        <p class="edition-description" data-reveal style="--reveal-delay: 600ms">STEM 2025 mengangkat tema &ldquo;Preparing Young Generation Resources for an Inclusive and Just Clean Energy Transition&rdquo;</p>
         <div class="edition-footer" data-reveal style="--reveal-delay: 750ms">
           <p class="edition-meta">8 November 2025, IPB University</p>
-          <a class="edition-more section-cta dark-cta" data-cursor-text="Rewind to 2025 ⏪" href="https://instagram.com/stem.ipb" target="_blank" rel="noopener noreferrer" aria-label="View more from STEM on Instagram (opens in a new tab)">
-            <span>View more</span><span class="arrow-box"><Arrow /></span>
+          <a class="edition-more section-cta dark-cta" data-cursor-text="Kilas Balik 2025 ⏪" href="https://instagram.com/stem.ipb" target="_blank" rel="noopener noreferrer" aria-label="Lihat selengkapnya di Instagram STEM (buka di tab baru)">
+            <span>Lihat selengkapnya</span><span class="arrow-box"><Arrow /></span>
           </a>
         </div>
       </article>
     </div>
   </div>
 </section>
-
-<script>
-  function initPhotoReveal() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const collages = document.querySelectorAll<HTMLElement>('[data-photo-reveal]');
-    if (!collages.length) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        const collage = entry.target as HTMLElement;
-        const photos = collage.querySelectorAll<HTMLElement>('.edition-photo');
-
-        photos.forEach((photo, i) => {
-          const delay = 80 + i * 90; // stagger: 80ms base + 90ms per photo
-          photo.animate([
-            {
-              opacity: 0,
-              transform: 'scale(0.7) rotate(-3deg)',
-              clipPath: 'inset(8% 8% 8% 8% round 4px)',
-            },
-            {
-              opacity: 1,
-              transform: 'scale(1) rotate(0deg)',
-              clipPath: 'inset(0% 0% 0% 0% round 0px)',
-            },
-          ], {
-            duration: 650,
-            delay,
-            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-            fill: 'both',
-          });
-        });
-
-        observer.unobserve(collage);
-      }
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-    collages.forEach(c => observer.observe(c));
-  }
-
-  // Init on load + Astro View Transitions
-  initPhotoReveal();
-  document.addEventListener('astro:page-load', initPhotoReveal);
-</script>

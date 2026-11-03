@@ -6,7 +6,9 @@
 		linear-gradient(to right, rgba(58, 128, 218, 0.4) 1px, transparent 1px),
 		linear-gradient(to bottom, rgba(58, 128, 218, 0.4) 1px, transparent 1px);
 	background-size: 24px 24px;
-	background-position: -1px -1px;
+	background-repeat: round;
+	background-position: 0 0;
+	background-clip: padding-box;
 	border: 1.5px solid #234E82;
 	padding: 24px 20px 24px 20px;
 	box-sizing: border-box;

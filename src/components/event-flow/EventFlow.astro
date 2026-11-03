@@ -5,12 +5,12 @@ const events = [
   { title: 'Workshop 1', type: 'Workshop', color: '#4EA5FF' },
   { title: 'Workshop 2', type: 'Workshop', color: '#FFD516' },
   { title: 'Seminar 3', type: 'Seminar', color: '#56DA9F' },
-  { title: 'Closing', type: 'Closing', color: '#4EA5FF' },
+  { title: 'Penutupan', type: 'Penutupan', color: '#4EA5FF' },
 ];
 ---
 <section id="event-flow" class="event-flow new-section" aria-labelledby="event-flow-title">
   <div class="section-inner flow-inner">
-    <h2 id="event-flow-title" class="section-heading" data-reveal>Event Flow</h2>
+    <h2 id="event-flow-title" class="section-heading" data-reveal>Rangkaian Acara</h2>
     <div class="event-grid">
       {events.map((event, index) => (
         <article class="event-card" style={`--card-color: ${event.color};`} data-col={index % 2} data-title={event.title}>
@@ -36,7 +36,7 @@ const events = [
           </div>
           <div class="event-illustration" aria-hidden="true"></div>
           <div class="event-description">
-            <p><strong>{event.type}:</strong> Topic to be announced. Explore emerging tech, IoT, and engineering solutions.</p>
+            <p><strong>{event.type}:</strong> Topik akan segera diumumkan. Jelajahi perkembangan teknologi, IoT, dan berbagai solusi rekayasa.</p>
           </div>
         </article>
       ))}

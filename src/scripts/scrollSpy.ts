@@ -4,10 +4,15 @@ export function initScrollSpy(): void {
 	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 	let lenis: Lenis | null = reducedMotion.matches ? null : new Lenis({ autoRaf: true });
 	const topBar = document.querySelector<HTMLElement>('[data-top-bar]');
+	const bottomNav = document.querySelector<HTMLElement>('[data-bottom-nav]');
+	const heroSection = document.getElementById('hero');
+	const registerSection = document.getElementById('register');
 	const links = [...document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]')];
-	const sections = [...document.querySelectorAll<HTMLElement>('#hero, #overview, #why-join, #event-flow, #partners, #past-editions, #register')];
+	const sections = [...document.querySelectorAll<HTMLElement>('#hero, #overview, #why-join, #event-flow, #partners, #past-editions, #merchandise, #register')];
 	const whyJoinSection = document.getElementById('why-join');
 	const columns = [...document.querySelectorAll<HTMLElement>('[data-column-index]')];
+	const merchandiseSection = document.getElementById('merchandise');
+	const merchandiseColumns = [...document.querySelectorAll<HTMLElement>('[data-merch-column]')];
 	const eventFlowSection = document.getElementById('event-flow');
 	const eventFlowCards = [...document.querySelectorAll<HTMLElement>('#event-flow .event-card')];
 
@@ -30,6 +35,20 @@ export function initScrollSpy(): void {
 	// Continuous staggered parallax for Why Join and Event Flow (no stop/finish).
 	function updateParallax() {
 		const isMobileOrReduced = window.innerWidth <= 1024 || reducedMotion.matches;
+
+		// Use the same continuous column motion as Why Join, with the left column leading.
+		if (merchandiseSection && merchandiseColumns.length) {
+			if (isMobileOrReduced) {
+				merchandiseColumns.forEach(column => column.style.removeProperty('transform'));
+			} else {
+				const rect = merchandiseSection.getBoundingClientRect();
+				if (rect.bottom >= -300 && rect.top <= window.innerHeight + 300) {
+					merchandiseColumns.forEach((column, index) => {
+						column.style.transform = `translateY(${(rect.top - 80) * index * 0.1}px)`;
+					});
+				}
+			}
+		}
 
 		if (whyJoinSection && columns.length >= 3) {
 			if (isMobileOrReduced) {
@@ -79,6 +98,18 @@ export function initScrollSpy(): void {
 	}
 
 	function update() {
+		if (bottomNav) {
+			const mobile = window.innerWidth <= 640;
+			const hero = heroSection?.getBoundingClientRect();
+			const register = registerSection?.getBoundingClientRect();
+			const heroVisible = hero && hero.bottom > 56 && hero.top < window.innerHeight;
+			const registerVisible = register && register.top < window.innerHeight && register.bottom > 56;
+			const visible = !mobile || (!heroVisible && !registerVisible);
+			bottomNav.dataset.mobileVisible = String(visible);
+			bottomNav.inert = !visible;
+			if (!visible) bottomNav.setAttribute('aria-hidden', 'true');
+			else bottomNav.removeAttribute('aria-hidden');
+		}
 		let current = sections[0];
 		for (const section of sections) {
 			if (section.getBoundingClientRect().top <= 200) current = section;
@@ -93,35 +124,11 @@ export function initScrollSpy(): void {
 				link.removeAttribute('aria-current');
 			}
 		});
-		if (id === 'why-join' || id === 'partners') topBar?.setAttribute('data-theme', 'dark');
+		if (id === 'why-join' || id === 'partners' || id === 'merchandise') topBar?.setAttribute('data-theme', 'dark');
 		else topBar?.removeAttribute('data-theme');
 		updateParallax();
 	}
 
-	// Global scroll-triggered animations (e.g. data-animate="float-up")
-	const animElements = [...document.querySelectorAll<HTMLElement>('[data-animate]')];
-	if (animElements.length) {
-		const animObserver = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('is-visible');
-						animObserver.unobserve(entry.target);
-					}
-				});
-			},
-			{ threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-		);
-
-		animElements.forEach((el) => {
-			const rect = el.getBoundingClientRect();
-			if (rect.top < window.innerHeight && rect.bottom > 0) {
-				el.classList.add('is-visible');
-			} else {
-				animObserver.observe(el);
-			}
-		});
-	}
 
 	let scheduled = false;
 	function schedule() {

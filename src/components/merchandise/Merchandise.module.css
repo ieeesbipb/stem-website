@@ -1,0 +1,72 @@
+.section {
+  background: #051020;
+  color: #fff;
+  padding: 80px var(--site-gutter) 96px;
+  border-bottom: var(--border-dark);
+}
+.header { margin-bottom: 64px; }
+.header h2 { font-size: clamp(36px, 6vw, 80px); font-weight: 500; line-height: 1.05; letter-spacing: -.045em; margin-bottom: 16px; }
+.header p { color: #d0d7e2; font-size: 18px; line-height: 1.6; }
+.layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+.bundles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 28px; }
+.column { display: flex; flex-direction: column; gap: 48px; min-width: 0; will-change: transform; }
+.bundle { min-width: 0; }
+.frame, .contents {
+  background-color: #07152b;
+  background-image: linear-gradient(to right, rgb(58 128 218 / .4) 1px, transparent 1px), linear-gradient(to bottom, rgb(58 128 218 / .4) 1px, transparent 1px);
+  background-size: 24px 24px;
+  /* Fit complete grid cells to the frame instead of leaving a thin edge cell. */
+  background-repeat: round;
+  background-position: 0 0;
+  background-clip: padding-box;
+  border: 1.5px solid #234e82;
+}
+.frame { position: relative; padding: 20px; aspect-ratio: 1; box-shadow: 0 10px 25px rgb(0 0 0 / .35); transition: border-color .2s; }
+.bundle:hover .frame { border-color: var(--accent-blue); }
+.badge { position: absolute; top: -16px; left: -1px; z-index: 1; background: var(--bundle-accent); color: #08111e; border: 1.5px solid #051020; box-shadow: 2px 2px 0 #051020; padding: 6px 14px; font: 700 14px var(--font-mono); line-height: 1.2; }
+.imageBox { position: relative; width: 100%; height: 100%; overflow: hidden; background: transparent; }
+.imageBox img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.details { display: flex; gap: 12px; align-items: center; justify-content: space-between; margin-top: 12px; }
+.contents { width: fit-content; color: #fff; padding: 10px 12px; font-size: 13px; font-weight: 600; line-height: 1.5; overflow-wrap: anywhere; }
+.price { flex-shrink: 0; color: #fff; font: 700 13px var(--font-mono); white-space: nowrap; }
+.desktopBreak { display: none; }
+@media (min-width: 1001px) {
+  .desktopBreak { display: block; }
+}
+.order { align-self: stretch; }
+.orderInner { position: sticky; top: 100px; padding: 28px; background: #fff; color: #08111e; border: 2px solid #08111e; box-shadow: 5px 5px 0 var(--accent-blue); }
+.order h3 { font-size: clamp(26px, 3vw, 42px); font-weight: 500; line-height: 1.1; letter-spacing: -.035em; margin-bottom: 16px; }
+.buyButton.buyButton { width: 100%; max-width: 300px; justify-content: space-between; background: #fff; box-shadow: none; transform: none; }
+.buyText { color: #08111e; padding-inline: 16px; }
+.bagBox { display: grid; place-items: center; flex: 0 0 52px; background: var(--accent-blue); color: #08111e; border-left: 2px solid #08111e; }
+@media (hover: hover) and (pointer: fine) {
+  .buyButton:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0 var(--navy-dark); }
+}
+.buyButton:hover svg { transform: none; }
+.buyButton:focus-visible { outline: 3px solid var(--accent-green); outline-offset: 6px; }
+.srOnly { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .order, .orderInner { position: static; }
+  .column { transform: none !important; }
+}
+@media (max-width: 640px) {
+  .section { padding-block: 48px 56px; }
+  .header { margin-bottom: 48px; }
+  .header h2 { font-size: clamp(32px, 9vw, 44px); }
+  .header p { font-size: 16px; }
+  .bundles { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .column { display: contents; }
+  .bundle { order: var(--bundle-order); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; gap: 16px; }
+  .frame { padding: 10px; align-self: start; }
+  .badge { font-size: 11px; padding: 5px 10px; top: -12px; }
+  .details { min-width: 0; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 10px; margin-top: 0; }
+  .contents { max-width: 100%; font-size: 12px; padding: 8px 10px; }
+  .price { font-size: 13px; }
+  .buyButton.buyButton { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .frame { transition: none; }
+  .column { transform: none !important; }
+  .buyButton.buyButton { transition: none; transform: none; }
+}

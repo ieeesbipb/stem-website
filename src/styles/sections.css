@@ -61,6 +61,7 @@
 .edition-photo:nth-child(9) { grid-area: 1 / 6 / 3 / 7; }
 .edition-photo:nth-child(10) { grid-area: 3 / 6 / 5 / 7; }
 .edition-photo img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.edition-photo:nth-child(8) img { object-position: 40% center; }
 [data-photo-reveal] .edition-photo { opacity: 0; will-change: transform, opacity, clip-path; }
 .edition-description { font-size: 17px; line-height: 1.45; letter-spacing: -.025em; margin-bottom: 12px; }
 .edition-footer { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
@@ -68,7 +69,8 @@
 .dark-cta { background: var(--section-ink); color: white; }
 .edition-more { width: 236px; flex-shrink: 0; min-height: 58px; box-shadow: 4px 4px 0 var(--section-ink); text-transform: uppercase; font-size: 13px; }
 .edition-more > span:first-child { justify-content: flex-start; }
-.register { min-height: calc(100svh - 120px); display: flex; align-items: center; }
+.edition-more .arrow-box { color: #000; }
+.register { min-height: calc(100svh - 120px); display: flex; align-items: center; border-left: 0; }
 .register-grid { display: grid; grid-template-columns: 1.12fr 1fr 1fr; gap: 26px; align-items: stretch; }
 .register-intro { padding-right: 24px; }
 .register-intro .edition-badge { box-shadow: 3px 3px 0 var(--section-ink); margin-bottom: 22px; font-size: 10px; }
@@ -78,11 +80,6 @@
 .registration-window { grid-column: span 2; background: #fff; border: 2px solid var(--section-ink); box-shadow: 5px 5px 0 var(--section-ink); display: flex; flex-direction: column; min-width: 0; }
 .window-checkers { height: 16px; flex: 0 0 16px; border-bottom: 2px solid var(--section-ink); background: repeating-linear-gradient(90deg, transparent 0 24px, var(--section-ink) 24px 25px), linear-gradient(90deg, var(--section-cream) 8%, #4EA5FF 8% 16%, var(--section-cream) 16% 48%, #FFD516 48% 56%, var(--section-cream) 56% 80%, #56DA9F 80% 88%, var(--section-cream) 88%); }
 .notify-panel { padding: 16px; background: #f7f7f7; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
-/* Leave room for Google's header, questions, and footer without nested scrolling. */
-/* Crop only the iframe's scrollbar edge; wheel, touch, and keyboard scrolling stay enabled. */
-.registration-embed-viewport { width: 100%; min-width: 0; overflow: hidden; }
-.registration-embed { display: block; width: calc(100% + 24px); max-width: none; height: 640px; border: 0; }
-.registration-fallback { align-self: center; margin-top: 12px; font-size: 12px; line-height: 1.6; text-decoration: underline; text-underline-offset: 3px; }
 .new-section :is(button, summary, iframe, a):focus-visible { outline: 3px solid #4EA5FF; outline-offset: 4px; }
 @media (max-width: 1000px) {
   .event-grid { gap: 40px; }
@@ -128,7 +125,6 @@
   .register-intro > p { font-size: 13px; }
   .registration-window { grid-column: 1 / -1; }
   .notify-panel { padding: 6px; }
-  .registration-embed { height: 760px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -153,7 +149,6 @@
   .register { min-height: auto; border-left: 0; }
   .register-intro { padding-right: 100px; }
   .register-intro .section-heading { font-size: clamp(36px, 10vw, 56px); }
-  .registration-fallback { text-align: center; padding-block: 10px; }
   .edition-card { padding: 16px; }
   .edition-more { width: 100%; }
 }

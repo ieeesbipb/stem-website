@@ -1,31 +1,52 @@
+---
+import styles from './RegistrationPreview.module.css';
+---
 <section id="register" class="register new-section" aria-labelledby="register-title">
   <div class="section-inner register-grid">
-    <div class="register-intro" data-reveal>
-      <span class="edition-badge">Status: TBA</span>
-      <h2 id="register-title" class="section-heading">Register</h2>
-      <p>Registration is open to high school students (SMA/SMK).</p>
-      <img src="/illust maskot 2.png" alt="STEM mascot welcoming participants" width="458" height="608" loading="lazy" data-parallax />
+    <div class:list={['register-intro', styles.intro]} data-reveal>
+      <h2 id="register-title" class="section-heading">Daftar</h2>
+      <p>Pendaftaran terbuka untuk pelajar SMA/SMK dan mahasiswa tahun pertama.</p>
+      <ol class={styles.timeline} data-registration-timeline aria-label="Periode pendaftaran">
+        <li class={styles.phase} data-registration-phase="early">
+          <div class={styles.phaseBadge}>Early Bird</div>
+          <div class={styles.phaseInfo}>
+            <span class={styles.remaining} data-phase-remaining="early"></span>
+          </div>
+        </li>
+        <li class={styles.phase} data-registration-phase="regular">
+          <div class={styles.phaseBadge}>Reguler</div>
+          <div class={styles.phaseInfo}>
+            <span class={styles.remaining} data-phase-remaining="regular"></span>
+          </div>
+        </li>
+      </ol>
     </div>
     <div class="registration-window" data-reveal style="--reveal-delay: 100ms">
       <div class="window-checkers" aria-hidden="true"></div>
-      <div class="notify-panel">
-        <div class="registration-embed-viewport">
-        <iframe
-          class="registration-embed"
-          src="https://docs.google.com/forms/d/e/1FAIpQLSeL3mdjH42ye7Sa8myWKDail16KBRp6XC8AV9QynlqXrv7eEA/viewform?embedded=true"
-          title="STEM 2026 registration form"
-          width="640"
-          height="640"
-          loading="lazy"
-        >Memuat…</iframe>
+      <div class:list={['notify-panel', styles.panel]} data-registration-preview>
+        <h3 class={styles.title}>STEM 2026 Participant Registration</h3>
+        <p class={styles.caption}>Siap jadi bagian dari STEM 2026?</p>
+        <div class={styles.preview} role="img" aria-label="Ilustrasi pengisian nama lengkap dan motivasi mengikuti STEM 2026. Untuk mendaftar, buka formulir melalui tombol di bawah.">
+          <div class={styles.field} data-preview-field="name" aria-hidden="true">
+            <span class={styles.label}>Nama Lengkap</span>
+            <div class={styles.input}><span data-typing-name>Abiyyu Dafa</span></div>
+          </div>
+          <div class={styles.field} data-preview-field="motivation" aria-hidden="true">
+            <span class={styles.label}>Motivasi Ikut STEM 2026</span>
+            <div class:list={[styles.input, styles.multiline]}><span data-typing-motivation>Aku mau belajar teknologi penanganan bencana!</span></div>
+          </div>
         </div>
-        <a
-          class="registration-fallback" data-cursor-text="Join STEM 2026 ↗"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSeL3mdjH42ye7Sa8myWKDail16KBRp6XC8AV9QynlqXrv7eEA/viewform"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Open form in a new tab ↗</a>
+        <a class:list={['section-cta', 'dark-cta', styles.cta]} href="https://docs.google.com/forms/d/e/1FAIpQLSdk_C4tQjplcMreWz01mIl_PVHCxSscSGTCssNvD2CYnE9l3w/viewform" target="_blank" rel="noopener noreferrer" data-cursor-text="Daftar STEM 2026 ↗" aria-label="Daftar Sekarang — buka Google Form di tab baru">
+          <span>Daftar Sekarang</span>
+        </a>
+        <p class={styles.note}>Pendaftaran dan unggah berkas dilakukan melalui Google Form.</p>
       </div>
     </div>
   </div>
 </section>
+<script>
+  import { initRegistrationPreview } from '../../scripts/registrationPreview';
+  import { initRegistrationTimeline } from '../../scripts/registrationTimeline';
+  initRegistrationPreview();
+  initRegistrationTimeline();
+</script>

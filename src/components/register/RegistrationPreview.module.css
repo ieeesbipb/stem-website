@@ -1,0 +1,36 @@
+.panel.panel { padding: clamp(22px, 4vw, 48px); }
+.intro.intro { padding-right: 0; min-height: 0; }
+.timeline { list-style: none; display: grid; gap: 30px; margin-top: 36px; }
+.phase { position: relative; display: grid; grid-template-columns: 132px minmax(0, 1fr); align-items: center; gap: 16px; }
+.phase:first-child::after { content: ''; position: absolute; left: 18px; top: 100%; width: 4px; height: 30px; background: repeating-linear-gradient(to bottom, var(--navy-dark) 0 4px, transparent 4px 8px); }
+.phaseBadge { background: #999; border: 2px solid var(--navy-dark); box-shadow: 5px 5px 0 var(--navy-dark); color: var(--navy-dark); text-transform: uppercase; font-size: 17px; font-weight: 800; text-align: center; padding: 8px 4px; }
+.phase[data-active] .phaseBadge { background: #27b6ed; }
+.phaseInfo { min-width: 0; }
+.remaining { display: block; font-size: clamp(13px, 1.2vw, 16px); font-weight: 500; line-height: 1.3; letter-spacing: -.025em; }
+.title { font-size: clamp(23px, 2.8vw, 34px); font-weight: 600; line-height: 1.2; letter-spacing: -.04em; max-width: 440px; }
+.caption { margin-top: 12px; color: #536171; font-size: 14px; line-height: 1.6; }
+.preview { display: grid; gap: 24px; margin-block: 32px; }
+.label { display: block; margin-bottom: 10px; font-size: 13px; font-weight: 700; }
+.input { background: #fff; border: 1.5px solid var(--navy-dark); min-height: 54px; padding: 14px 16px; font: 14px/1.7 var(--font-mono); overflow-wrap: anywhere; transition: box-shadow .2s, border-color .2s; }
+.multiline { min-height: 130px; }
+.field[data-typing-active] .input { border-color: #2865a5; box-shadow: 3px 3px 0 var(--accent-blue); }
+.field[data-typing-active] .input span::after { content: ''; display: inline-block; width: 2px; height: 1.1em; background: #2865a5; margin-left: 3px; vertical-align: -.15em; animation: blink 1s step-end infinite; }
+.cta { margin-top: 0; }
+.note { color: #536171; font-size: 11px; line-height: 1.6; margin-top: 16px; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (max-width: 640px) {
+  .timeline { grid-template-columns: max-content max-content; width: fit-content; max-width: 100%; gap: 28px; margin-top: 28px; }
+  .phase { grid-template-columns: minmax(0, 1fr); align-content: start; justify-items: center; gap: 14px; text-align: center; }
+  .phase:first-child::after { left: 100%; top: 18px; width: 28px; height: 4px; background: repeating-linear-gradient(to right, var(--navy-dark) 0 4px, transparent 4px 8px); }
+  .phaseBadge { width: max-content; font-size: 15px; padding: 10px 12px; }
+  .phaseInfo { max-width: 124px; }
+  .remaining { font-size: 13px; }
+  .panel.panel { padding: 30px 22px; }
+  .preview { gap: 20px; margin-block: 24px; }
+  .input { font-size: 12px; padding: 14px 12px; }
+  .multiline { min-height: 140px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .input { transition: none; }
+  .field[data-typing-active] .input span::after { animation: none; }
+}
