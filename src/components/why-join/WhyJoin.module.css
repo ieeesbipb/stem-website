@@ -137,3 +137,15 @@
 		margin-bottom: 2.5rem;
 	}
 }
+
+@media (max-width: 1024px) {
+  .sectionHeader { margin-bottom: 48px; }
+  .columnsContainer { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 20px; }
+  .column { display: contents; }
+  .cardItem { min-width: 0; }
+}
+@media (max-width: 768px) {
+  .columnsContainer { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .sectionTitle { font-size: clamp(32px, 7vw, 48px); }
+  .sectionSubtitle { font-size: 16px; line-height: 1.6; }
+}

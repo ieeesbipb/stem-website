@@ -1,1 +1,5 @@
 @import './tokens.css';
+
+@media (max-width: 768px) {
+  :root { --site-gutter: clamp(18px, 5vw, 32px); }
+}

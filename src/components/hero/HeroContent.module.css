@@ -298,3 +298,20 @@
 		justify-content: center;
 	}
 }
+
+@media (max-width: 1024px) {
+  .heroContent, .overviewContent { max-width: none; }
+  .heroHeaderBlock { width: 100%; }
+  .actionRow { flex-wrap: wrap; }
+}
+@media (max-width: 640px) {
+  .titleMain, .titleSub { font-size: clamp(32px, 9.5vw, 60px); white-space: normal; }
+  .titleGroup { margin-bottom: 24px; }
+  .actionRow { flex-direction: column; align-items: stretch; gap: 20px; }
+  .targetAudience { max-width: none; text-align: left; line-height: 1.5; }
+  .btnText { padding: 14px 18px; }
+  .btnIcon { flex: 0 0 48px; }
+  .overviewHeading { font-size: 22px; }
+  .overviewLead { font-size: 15px; line-height: 1.7; }
+  .screenPane { padding-block: 36px; }
+}

@@ -154,3 +154,13 @@
 		min-width: unset;
 	}
 }
+
+/* Let only the tabs scroll; keep the registration action visible. */
+.navLinksScroll { min-width: 0; flex: 1 1 auto; overscroll-behavior-x: contain; }
+.navItem { flex-shrink: 0; }
+.navCta { flex: 0 0 auto; }
+@media (max-width: 640px) {
+  .bottomNav { height: calc(56px + env(safe-area-inset-bottom, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .navItem { min-height: 54px; padding-inline: 14px; font-size: 12px; }
+  .ctaArrowBox { height: 54px; }
+}

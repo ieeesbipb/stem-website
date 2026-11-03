@@ -176,3 +176,11 @@
 		width: 38px;
 	}
 }
+
+@media (max-width: 640px) {
+  .heroRight { height: auto; min-height: 0; padding: 44px 20px; }
+  .stageContainer { padding: 0 20px; }
+  .visualStage { max-width: 300px; }
+  .keycapsAsset { max-height: none; }
+  .cornerIcon img { width: 30px; }
+}

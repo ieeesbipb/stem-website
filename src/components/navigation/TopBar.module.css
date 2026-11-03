@@ -122,3 +122,12 @@
 		font-size: 1.1rem;
 	}
 }
+
+@media (max-width: 640px) {
+  .topLeft { min-width: 0; padding-inline: 16px; }
+  .brandLink { gap: 8px; }
+  .brandText { font-size: 15px; }
+  .logoBox { width: 30px; height: 16px; }
+  .topRight { width: auto; min-width: 0; padding-inline: 12px; }
+  .dateTag { font-size: clamp(9px, 2.5vw, 12px); gap: 4px; }
+}

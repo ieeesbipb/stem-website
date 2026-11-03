@@ -2,7 +2,7 @@
 import Arrow from '../shared/Arrow.astro';
 
 const photos2025 = Array.from({ length: 10 }, (_, i) =>
-  `/past-editions/2025/${String(i + 1).padStart(2, '0')}.jpg`
+  `/past-editions/2025/${String(i + 1).padStart(2, '0')}`
 );
 ---
 <section id="past-editions" class="past-editions new-section" aria-labelledby="past-title">
@@ -17,11 +17,20 @@ const photos2025 = Array.from({ length: 10 }, (_, i) =>
         <div class="edition-collage" data-photo-reveal aria-label="STEM 2025 photo collage">
           {photos2025.map((src, i) => (
             <div class="edition-photo" style={`--photo-i: ${i}`}>
-              <img src={src} alt={`STEM 2025 photo ${i + 1}`} loading="lazy" decoding="async" />
+              <img
+                src={`${src}-1280.webp`}
+                srcset={`${src}-640.webp 640w, ${src}-1280.webp 1280w`}
+                sizes="(max-width: 640px) 70vw, (max-width: 1024px) 40vw, 30vw"
+                width="1280"
+                height="853"
+                alt={`STEM 2025 photo ${i + 1}`}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           ))}
         </div>
-        <p class="edition-description" data-reveal style="--reveal-delay: 600ms">STEM 2025 explored the theme &ldquo;Preparing Young Generation Resources for an Inclusive and Just Clean Energy Transition&rdquo; at Auditorium GMSK, IPB University.</p>
+        <p class="edition-description" data-reveal style="--reveal-delay: 600ms">STEM 2025 explored the theme &ldquo;Preparing Young Generation Resources for an Inclusive and Just Clean Energy Transition&rdquo;</p>
         <div class="edition-footer" data-reveal style="--reveal-delay: 750ms">
           <p class="edition-meta">8 November 2025, IPB University</p>
           <a class="edition-more section-cta dark-cta" data-cursor-text="Rewind to 2025 ⏪" href="https://instagram.com/stem.ipb" target="_blank" rel="noopener noreferrer" aria-label="View more from STEM on Instagram (opens in a new tab)">
