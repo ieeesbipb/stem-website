@@ -89,3 +89,10 @@
 	color: var(--navy-dark);
 	line-height: 1;
 }
+
+@media (max-width: 640px) {
+  .countdownBox { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 28px; }
+  .dateSegment { grid-column: 1 / -1; border-right: 0; border-bottom: 1.5px solid var(--navy-dark); padding: 12px 8px; }
+  .segment:not(.dateSegment) { flex-direction: column; padding: 10px 2px; gap: 4px; }
+  .sideLabel { font-size: 10px; }
+}

@@ -7,12 +7,13 @@ import WhyJoin from '../components/why-join/WhyJoin.astro';
 import EventFlow from '../components/event-flow/EventFlow.astro';
 import Partners from '../components/partners/Partners.astro';
 import PastEditions from '../components/past-editions/PastEditions.astro';
+import Merchandise from '../components/merchandise/Merchandise.astro';
 import Register from '../components/register/Register.astro';
 import '../styles/sections.css';
 import styles from './index.module.css';
 ---
 
-<Layout title="STEM 2026 | National High School Technology & Engineering Competition">
+<Layout title="STEM 2026 | Kompetisi Teknologi dan Rekayasa Tingkat Nasional">
 	<TopBar />
 	<main class={styles.pageContainer}>
 		<Hero />
@@ -20,6 +21,7 @@ import styles from './index.module.css';
 		<EventFlow />
 		<Partners />
 		<PastEditions />
+		<Merchandise />
 		<Register />
 	</main>
 	<Navbar />
@@ -30,9 +32,14 @@ import styles from './index.module.css';
 	import { initScrollAnimations } from '../scripts/scrollAnimations';
 	import { initCountdown } from '../scripts/countdown';
 
-	document.addEventListener('DOMContentLoaded', () => {
+	function initPage() {
 		initScrollSpy();
 		initScrollAnimations();
 		initCountdown();
-	});
+	}
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initPage, { once: true });
+	} else {
+		initPage();
+	}
 </script>

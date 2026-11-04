@@ -6,10 +6,10 @@ export interface NavItem {
 }
 
 export const navItems: NavItem[] = [
-	{ label: "Overview", href: "#overview", active: true, id: "nav-overview" },
-	{ label: "Why Join", href: "#why-join", id: "nav-why-join" },
-	{ label: "Event Flow", href: "#event-flow", id: "nav-event-flow" },
-	{ label: "Speakers", href: "#speakers", id: "nav-speakers" },
-	{ label: "Partners", href: "#partners", id: "nav-partners" },
+	{ label: "Tentang", href: "#overview", active: true, id: "nav-overview" },
+	{ label: "Alasan Ikut", href: "#why-join", id: "nav-why-join" },
+	{ label: "Rangkaian Acara", href: "#event-flow", id: "nav-event-flow" },
+	{ label: "Pembicara", href: "#speakers", id: "nav-speakers" },
+	{ label: "Mitra", href: "#partners", id: "nav-partners" },
 	{ label: "FAQ", href: "#faq", id: "nav-faq" },
 ];

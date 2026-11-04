@@ -8,3 +8,7 @@
 	padding-bottom: 64px;
 	box-sizing: border-box;
 }
+
+@media (max-width: 640px) {
+  .pageContainer { padding-bottom: env(safe-area-inset-bottom, 0px); }
+}

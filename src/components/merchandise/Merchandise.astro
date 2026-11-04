@@ -1,0 +1,51 @@
+---
+import { merchandiseBundles, merchandiseOrderUrl } from '../../data/merchandise';
+import ShoppingBag from './ShoppingBag.astro';
+import button from '../hero/HeroContent.module.css';
+import styles from './Merchandise.module.css';
+
+const currency = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 });
+const accents = ['var(--accent-yellow)', 'var(--accent-blue)', 'var(--accent-green)', 'var(--accent-yellow)'];
+---
+<section id="merchandise" class={styles.section} aria-labelledby="merchandise-title">
+  <header class={styles.header} data-reveal>
+    <h2 id="merchandise-title">Merchandise</h2>
+    <p>Bawa pulang kenangan dari STEM</p>
+  </header>
+  <div class={styles.layout}>
+    <div class={styles.bundles}>
+      {[0, 1].map(column => (
+        <div class={styles.column} data-merch-column={column}>
+        {merchandiseBundles.map((bundle, index) => index % 2 === column && (
+        <article class={styles.bundle} style={`--bundle-accent: ${accents[index]}; --bundle-order: ${index}; --reveal-delay: ${(index % 2) * 120}ms`} data-reveal aria-labelledby={`bundle-${index + 1}`}>
+          <div class={styles.frame}>
+            <h3 class={styles.badge} id={`bundle-${index + 1}`}>{bundle.name}</h3>
+            <div class={styles.imageBox}>
+              <img
+                src={`${bundle.image}-1080.webp`}
+                srcset={`${bundle.image}-640.webp 640w, ${bundle.image}-1080.webp 1080w`}
+                sizes="(max-width: 640px) 42vw, (max-width: 1000px) 45vw, 30vw"
+                alt={`${bundle.name}: ${bundle.contents}`}
+                width="1080" height="1080" loading="lazy" decoding="async"
+              />
+            </div>
+          </div>
+          <div class={styles.details}>
+            <p class={styles.contents}>{index === 3 ? <Fragment>Enamel, Badges, Strap,<br class={styles.desktopBreak} /> Gantungan Kunci &amp; Stiker</Fragment> : bundle.contents}</p>
+            <p class={styles.price}><span class={styles.srOnly}>Harga: </span>{currency.format(bundle.price)}</p>
+          </div>
+        </article>
+        ))}
+        </div>
+      ))}
+    </div>
+    <aside class={styles.order}>
+      <div class={styles.orderInner} data-reveal style="--reveal-delay: 180ms">
+        <h3>Pilih paket favoritmu!</h3>
+        <a href={merchandiseOrderUrl} class:list={[button.heroBtn, styles.buyButton]} target="_blank" rel="noopener noreferrer" data-cursor-text="Beli Merchandise STEM ↗" aria-label="Beli sekarang — buka formulir pemesanan di tab baru">
+          <span class:list={[button.btnText, styles.buyText]}>Beli sekarang</span><span class={styles.bagBox}><ShoppingBag /></span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</section>
