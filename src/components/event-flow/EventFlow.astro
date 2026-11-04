@@ -1,45 +1,239 @@
 ---
-const events = [
-  { title: 'Seminar 1', type: 'Seminar', color: '#FFD516' },
-  { title: 'Seminar 2', type: 'Seminar', color: '#56DA9F' },
-  { title: 'Workshop 1', type: 'Workshop', color: '#4EA5FF' },
-  { title: 'Workshop 2', type: 'Workshop', color: '#FFD516' },
-  { title: 'Seminar 3', type: 'Seminar', color: '#56DA9F' },
-  { title: 'Closing', type: 'Closing', color: '#4EA5FF' },
+const cards = [
+  {
+    col: 1,
+    badge: 'Seminar',
+    badgeBg: '#ffd60f',
+    badgeText: '#01101f',
+    accentBg: '#ffd60f',
+    iconColor: '#01101f',
+    title: 'Seminar',
+    img: '/images/event-flow/seminar-mascot.PNG',
+    imgAlt: 'Maskot STEM duduk di meja di depan layar presentasi',
+    imgPosition: 'center center',
+    description:
+      'Pemaparan konsep dasar IoT dan mitigasi bencana, dilengkapi Pre-Test dan Post-Test supaya peserta dapat memahami penggunaan teknologi dalam penanganan bencana.',
+  },
+  {
+    col: 2,
+    badge: 'Workshop',
+    badgeBg: '#e6ccff',
+    badgeText: '#01101f',
+    accentBg: '#e6ccff',
+    iconColor: '#01101f',
+    title: "Hand's on Workshop",
+    img: '/images/event-flow/workshop-mascot.PNG',
+    imgAlt: 'Maskot STEM mengerjakan perangkat di meja workshop bersama peserta',
+    imgPosition: 'center bottom',
+    description:
+      'Peserta melakukan praktik langsung tentang perakitan sirkuit sensor IoT dan flashing firmware dengan rasio pendampingan 1 Mentor Khusus IEEE per 10 peserta.',
+  },
+  {
+    col: 1,
+    badge: 'City Integration',
+    badgeBg: '#ff6b00',
+    badgeText: '#ffffff',
+    accentBg: '#ff6b00',
+    iconColor: '#ffffff',
+    title: 'City Integration & Awarding',
+    img: '/images/event-flow/city-integration-mascot.PNG',
+    imgAlt: 'Maskot STEM berdiri di samping podium',
+    imgPosition: 'center center',
+    description:
+      'Integrasi prototype ke maket miniatur kota 3D, simulasi Command Center secara real-time, dan awarding apresiasi penanya dan kelompok workshop terbaik.',
+  },
 ];
 ---
-<section id="event-flow" class="event-flow new-section" aria-labelledby="event-flow-title">
+
+<section id="event-flow" class="new-section event-flow" aria-labelledby="event-flow-title">
   <div class="section-inner flow-inner">
     <h2 id="event-flow-title" class="section-heading" data-reveal>Event Flow</h2>
-    <div class="event-grid">
-      {events.map((event, index) => (
-        <article class="event-card" style={`--card-color: ${event.color};`} data-col={index % 2} data-title={event.title}>
-          <span class="event-badge">{event.type}</span>
-          <div class="event-titlebar">
-            <div class="event-titlebar-inner">
-              <span class="event-icon-box" aria-hidden="true">
-                <svg width="26" height="26" viewBox="0 0 28 28" fill="currentColor">
-                  <circle cx="5" cy="14" r="1.35" />
-                  <circle cx="8.5" cy="14" r="1.35" />
-                  <circle cx="12" cy="14" r="1.35" />
-                  <circle cx="15.5" cy="14" r="1.35" />
-                  <circle cx="19" cy="14" r="1.35" />
-                  <circle cx="22.5" cy="14" r="1.35" />
-                  <circle cx="15.5" cy="7.5" r="1.35" />
-                  <circle cx="19" cy="10.8" r="1.35" />
-                  <circle cx="15.5" cy="20.5" r="1.35" />
-                  <circle cx="19" cy="17.2" r="1.35" />
-                </svg>
-              </span>
-              <h3 class="event-title-text">{event.title}</h3>
+
+    <ol class="ef-grid">
+      {cards.map((card, i) => (
+        <li
+          class={`ef-item ef-col-${card.col}`}
+          style={`--card-accent: ${card.accentBg}; --badge-bg: ${card.badgeBg}; --badge-text: ${card.badgeText}; --icon-color: ${card.iconColor}; --reveal-delay: ${i * 120}ms;`}
+          data-reveal
+        >
+          <article class="ef-card">
+            <!-- Badge -->
+            <span class="ef-badge">{card.badge}</span>
+
+            <!-- Title bar -->
+            <header class="ef-titlebar">
+              <div class="ef-titlebar-inner">
+                <span class="ef-icon-box" aria-hidden="true">
+                  <svg class="ef-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </span>
+                <h3 class="ef-title-text">{card.title}</h3>
+              </div>
+            </header>
+
+            <!-- Mascot image panel -->
+            <div class="ef-illustration">
+              <img
+                src={card.img}
+                alt={card.imgAlt}
+                loading="lazy"
+                class="ef-mascot"
+                style={`object-position: ${card.imgPosition};`}
+              />
             </div>
-          </div>
-          <div class="event-illustration" aria-hidden="true"></div>
-          <div class="event-description">
-            <p><strong>{event.type}:</strong> Topic to be announced. Explore emerging tech, IoT, and engineering solutions.</p>
-          </div>
-        </article>
+
+            <!-- Description -->
+            <p lang="id" class="ef-description">{card.description}</p>
+          </article>
+        </li>
       ))}
-    </div>
+    </ol>
   </div>
 </section>
+
+<style>
+  /* ── Grid layout ─────────────────────────────────────────────── */
+  .ef-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 460px));
+    gap: 48px 72px;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Column placement */
+  .ef-col-1 { grid-column: 1; }
+  .ef-col-2 { grid-column: 2; }
+
+  /* Right-column card is offset downward to create the stagger */
+  .ef-col-2 { margin-top: 180px; }
+
+  /* Row assignment: card 1 → row 1 col 1, card 2 → row 1 col 2, card 3 → row 2 col 1 */
+  .ef-item:nth-child(1) { grid-row: 1; }
+  .ef-item:nth-child(2) { grid-row: 1; }
+  .ef-item:nth-child(3) { grid-row: 2; }
+
+  /* ── Card shell ──────────────────────────────────────────────── */
+  .ef-item { position: relative; align-self: start; padding-top: 18px; }
+
+  .ef-card {
+    position: relative;
+    border: 2px solid var(--navy-dark);
+    background: #fff;
+    box-shadow: 4px 4px 0 var(--navy-dark);
+  }
+
+  /* ── Badge ───────────────────────────────────────────────────── */
+  .ef-badge {
+    position: absolute;
+    top: -14px;
+    left: -1px;
+    z-index: 10;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border: 2px solid var(--navy-dark);
+    box-shadow: 2px 2px 0 var(--navy-dark);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 3px 10px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* ── Title bar ───────────────────────────────────────────────── */
+  .ef-titlebar {
+    background-color: #dee1e6;
+    background-image:
+      linear-gradient(to right,  rgba(1,16,31,0.13) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(1,16,31,0.13) 1px, transparent 1px);
+    background-size: 16px 16px;
+    padding: 14px 16px 18px;
+    border-bottom: 2px solid var(--navy-dark);
+  }
+
+  .ef-titlebar-inner {
+    display: flex;
+    align-items: stretch;
+    background: #fff;
+    border: 2px solid var(--navy-dark);
+    box-shadow: 2px 2px 0 var(--navy-dark);
+    min-height: 52px;
+  }
+
+  .ef-icon-box {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    flex: 0 0 48px;
+    background: var(--card-accent);
+    border-right: 2px solid var(--navy-dark);
+    color: var(--icon-color);
+  }
+
+  .ef-icon { width: 20px; height: 20px; }
+
+  .ef-title-text {
+    font-family: var(--font-heading);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--navy-dark);
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  /* ── Illustration panel ──────────────────────────────────────── */
+  .ef-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 192px;
+    background: var(--card-accent);
+    border-bottom: 2px solid var(--navy-dark);
+  }
+
+  .ef-mascot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Description ─────────────────────────────────────────────── */
+  .ef-description {
+    padding: 18px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: var(--navy-dark);
+    margin: 0;
+  }
+
+  /* ── Responsive ──────────────────────────────────────────────── */
+  @media (max-width: 860px) {
+    .ef-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 40px;
+    }
+    .ef-col-1,
+    .ef-col-2 { grid-column: 1; }
+    .ef-col-2  { margin-top: 0; }
+    .ef-item:nth-child(1),
+    .ef-item:nth-child(2),
+    .ef-item:nth-child(3) { grid-row: auto; }
+  }
+
+  @media (max-width: 480px) {
+    .ef-illustration { height: 160px; }
+    .ef-mascot { width: 120px; height: 120px; }
+  }
+</style>
