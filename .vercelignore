@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+# The website uses the optimized WebP copies, not these source images.
+public/past-editions/2025/*.jpg
+public/past-editions/2025/*.JPG
+src/assets/merchandise/
