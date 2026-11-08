@@ -20,26 +20,21 @@
 	border-color: #4EA5FF;
 }
 
-/* Top-Left Corner Badge */
+/* Title badge stays in the layout so wrapped titles never overlap the copy. */
 .cardBadge {
-	position: absolute;
-	top: -14px;
-	left: -1px;
+	position: relative;
 	z-index: 5;
-	width: 36px;
-	height: 36px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	width: fit-content;
+	max-width: calc(100% + 40px);
+	margin: -40px 0 16px -22px;
+	padding: 8px 12px;
 	border: 1.5px solid #051020;
-	box-shadow: 2px 2px 0px #051020;
-	user-select: none;
-}
-
-.badgeIcon {
-	width: 22px;
-	height: 22px;
-	display: block;
+	box-shadow: 2px 2px 0 #051020;
+	font-family: var(--font-body);
+	font-size: 14px;
+	font-weight: 800;
+	line-height: 1.4;
+	overflow-wrap: anywhere;
 }
 
 /* Inner White Box */
@@ -49,15 +44,15 @@
 	padding: 24px 22px;
 	min-height: 110px;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	border: 2px solid #051020;
 	box-sizing: border-box;
 }
 
 .cardText {
-	font-size: 1.15rem;
-	font-weight: 700;
-	line-height: 1.35;
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.65;
 	color: #08111E;
 	margin: 0;
 	letter-spacing: -0.01em;
@@ -68,12 +63,18 @@
 		padding: 20px 16px;
 	}
 
+	.cardBadge {
+		max-width: calc(100% + 32px);
+		margin: -36px 0 14px -18px;
+		font-size: 13px;
+	}
+
 	.cardInner {
 		padding: 20px 16px;
 		min-height: 90px;
 	}
 
 	.cardText {
-		font-size: 1.05rem;
+		font-size: .95rem;
 	}
 }

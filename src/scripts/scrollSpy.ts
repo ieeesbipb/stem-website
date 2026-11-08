@@ -8,13 +8,13 @@ export function initScrollSpy(): void {
 	const heroSection = document.getElementById('hero');
 	const registerSection = document.getElementById('register');
 	const links = [...document.querySelectorAll<HTMLAnchorElement>('nav a[href^="#"]')];
-	const sections = [...document.querySelectorAll<HTMLElement>('#hero, #overview, #why-join, #event-flow, #partners, #past-editions, #merchandise, #register')];
+	const sections = [...document.querySelectorAll<HTMLElement>('#hero, #overview, #why-join, #event-flow, #past-editions, #merchandise, #register')];
 	const whyJoinSection = document.getElementById('why-join');
-	const columns = [...document.querySelectorAll<HTMLElement>('[data-column-index]')];
+	const benefitCards = [...document.querySelectorAll<HTMLElement>('[data-benefit-index]')];
 	const merchandiseSection = document.getElementById('merchandise');
 	const merchandiseColumns = [...document.querySelectorAll<HTMLElement>('[data-merch-column]')];
 	const eventFlowSection = document.getElementById('event-flow');
-	const eventFlowCards = [...document.querySelectorAll<HTMLElement>('#event-flow .event-card')];
+	const eventFlowCards = [...document.querySelectorAll<HTMLElement>('#event-flow [data-event-index]')];
 
 	// Route all section links through the same scroll engine, including hero CTAs.
 	const brandLink = document.querySelector<HTMLAnchorElement>('[data-brand-link]');
@@ -27,8 +27,15 @@ export function initScrollSpy(): void {
 			if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
 			event.preventDefault();
 			history.replaceState(null, '', `#${id}`);
-			if (lenis) lenis.scrollTo(target, { offset: -56 });
-			else target.scrollIntoView({ behavior: 'instant' });
+			const headerHeight = topBar?.getBoundingClientRect().height ?? 56;
+			// A numeric destination avoids Lenis also subtracting CSS scroll-padding.
+			const destination = Math.max(0, window.scrollY + target.getBoundingClientRect().top - headerHeight);
+			if (lenis) {
+				lenis.resize();
+				lenis.scrollTo(destination);
+			} else {
+				window.scrollTo({ top: destination, behavior: 'instant' });
+			}
 		});
 	});
 
@@ -50,16 +57,17 @@ export function initScrollSpy(): void {
 			}
 		}
 
-		if (whyJoinSection && columns.length >= 3) {
+		if (whyJoinSection && benefitCards.length) {
 			if (isMobileOrReduced) {
-				columns.forEach(column => column.style.removeProperty('transform'));
+				benefitCards.forEach(card => card.style.removeProperty('transform'));
 			} else {
 				const rect = whyJoinSection.getBoundingClientRect();
 				if (rect.bottom >= -300 && rect.top <= window.innerHeight + 300) {
 					const delta = rect.top - 80;
-					const factors = [0, 0.1, 0.2];
-					columns.forEach((column, index) => {
-						column.style.transform = `translateY(${delta * (factors[index] ?? 0)}px)`;
+					const factors = [0, 0.1, 0.2, 0.05, 0.15];
+					benefitCards.forEach((card, index) => {
+						const offset = Math.max(-140, Math.min(140, delta * (factors[index] ?? 0)));
+						card.style.transform = `translateY(${offset}px)`;
 					});
 				}
 			}
@@ -72,25 +80,12 @@ export function initScrollSpy(): void {
 				const rect = eventFlowSection.getBoundingClientRect();
 				if (rect.bottom >= -300 && rect.top <= window.innerHeight + 300) {
 					const delta = rect.top - 80;
-					const rightFactor = 0.18;
-					const rightBase = 150;
-					const leftParallax: Record<string, { factor: number; baseOffset: number }> = {
-						'Workshop 1': { factor: 0.07, baseOffset: 48 },
-						'Seminar 3': { factor: 0.12, baseOffset: 96 },
-					};
+					// Move the whole zigzag equally so parallax preserves the 40px grid gaps.
+					const factors = [0.18, 0.18, 0.18];
 					eventFlowCards.forEach(card => {
-						const col = Number(card.dataset.col || 0);
-						const title = card.dataset.title || '';
-						if (col === 1) {
-							// Right column: continuous parallax
-							card.style.transform = `translateY(${rightBase + delta * rightFactor}px)`;
-						} else if (leftParallax[title]) {
-							// Left 2 cards: continuous parallax (no finish/stop), separate speeds
-							const { factor, baseOffset } = leftParallax[title];
-							card.style.transform = `translateY(${baseOffset + delta * factor}px)`;
-						} else {
-							card.style.transform = 'translateY(0px)';
-						}
+						const index = Number(card.dataset.eventIndex || 0);
+						const offset = Math.max(-28, Math.min(96, delta * (factors[index] ?? 0)));
+						card.style.transform = `translateY(${offset}px)`;
 					});
 				}
 			}
@@ -98,12 +93,13 @@ export function initScrollSpy(): void {
 	}
 
 	function update() {
+		const headerHeight = topBar?.getBoundingClientRect().height ?? 56;
 		if (bottomNav) {
 			const mobile = window.innerWidth <= 640;
 			const hero = heroSection?.getBoundingClientRect();
 			const register = registerSection?.getBoundingClientRect();
-			const heroVisible = hero && hero.bottom > 56 && hero.top < window.innerHeight;
-			const registerVisible = register && register.top < window.innerHeight && register.bottom > 56;
+			const heroVisible = hero && hero.bottom > headerHeight && hero.top < window.innerHeight;
+			const registerVisible = register && register.top < window.innerHeight && register.bottom > headerHeight;
 			const visible = !mobile || (!heroVisible && !registerVisible);
 			bottomNav.dataset.mobileVisible = String(visible);
 			bottomNav.inert = !visible;
@@ -112,7 +108,7 @@ export function initScrollSpy(): void {
 		}
 		let current = sections[0];
 		for (const section of sections) {
-			if (section.getBoundingClientRect().top <= 200) current = section;
+			if (section.getBoundingClientRect().top <= headerHeight + 2) current = section;
 		}
 		const id = current?.id === 'hero' ? 'overview' : current?.id;
 		links.forEach(link => {
@@ -124,7 +120,7 @@ export function initScrollSpy(): void {
 				link.removeAttribute('aria-current');
 			}
 		});
-		if (id === 'why-join' || id === 'partners' || id === 'merchandise') topBar?.setAttribute('data-theme', 'dark');
+		if (id === 'why-join' || id === 'merchandise') topBar?.setAttribute('data-theme', 'dark');
 		else topBar?.removeAttribute('data-theme');
 		updateParallax();
 	}

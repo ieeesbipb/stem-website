@@ -4,9 +4,8 @@
   padding: 80px var(--site-gutter) 96px;
   border-bottom: var(--border-dark);
 }
-.header { margin-bottom: 64px; }
-.header h2 { font-size: clamp(36px, 6vw, 80px); font-weight: 500; line-height: 1.05; letter-spacing: -.045em; margin-bottom: 16px; }
-.header p { color: #d0d7e2; font-size: 18px; line-height: 1.6; }
+.header { margin-bottom: 40px; text-align: center; }
+.header h2 { font-size: var(--section-title-size); font-weight: 500; line-height: 1.05; letter-spacing: -.045em; margin-bottom: 0; }
 .layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
 .bundles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 28px; }
 .column { display: flex; flex-direction: column; gap: 48px; min-width: 0; will-change: transform; }
@@ -52,9 +51,8 @@
 }
 @media (max-width: 640px) {
   .section { padding-block: 48px 56px; }
-  .header { margin-bottom: 48px; }
-  .header h2 { font-size: clamp(32px, 9vw, 44px); }
-  .header p { font-size: 16px; }
+  .header { margin-bottom: 36px; }
+  .header h2 { font-size: var(--section-title-size); }
   .bundles { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .column { display: contents; }
   .bundle { order: var(--bundle-order); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: start; gap: 16px; }

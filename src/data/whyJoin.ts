@@ -1,61 +1,57 @@
 export interface WhyJoinCardData {
 	id: string;
 	num: string;
+	title: string;
 	badgeBg: string;
 	badgeColor: string;
 	text: string;
 }
 
 export const whyJoinColumns: WhyJoinCardData[][] = [
-	// Column 1 (Left - leads scroll)
 	[
 		{
-			id: "card-01",
-			num: "01",
-			badgeBg: "#56DA9F",
-			badgeColor: "#051020",
-			text: "Tambah pengetahuan dan pengalaman baru",
+			id: 'card-01',
+			num: '01',
+			title: 'Learn IoT by Doing',
+			badgeBg: '#56DA9F',
+			badgeColor: '#051020',
+			text: 'Pelajari dasar Internet of Things (IoT) melalui pengalaman praktik langsung, mulai dari merakit sirkuit sensor hingga memprogram ESP32 untuk membangun prototipe IoT.',
 		},
 		{
-			id: "card-04",
-			num: "04",
-			badgeBg: "#4EA5FF",
-			badgeColor: "#051020",
-			text: "Kenalan dengan pelajar dari sekolah lain",
+			id: 'card-04',
+			num: '04',
+			title: 'Collaborate and Create Together',
+			badgeBg: '#4EA5FF',
+			badgeColor: '#051020',
+			text: 'Kembangkan kemampuan bekerja sama, bertukar ide, dan menyelesaikan tantangan bersama peserta lain melalui workshop berbasis kelompok.',
 		},
 	],
-	// Column 2 (Middle - lags slightly)
 	[
 		{
-			id: "card-02",
-			num: "02",
-			badgeBg: "#FFD516",
-			badgeColor: "#051020",
-			text: "Ikuti seminar dan workshop dengan praktik langsung",
+			id: 'card-02',
+			num: '02',
+			title: 'Turn Ideas into Real Projects',
+			badgeBg: '#FFD516',
+			badgeColor: '#051020',
+			text: 'Ubah konsep STEM yang kamu pelajari menjadi solusi teknologi melalui proses perancangan, perakitan, pemrograman, dan pengujian prototipe.',
 		},
 		{
-			id: "card-05",
-			num: "05",
-			badgeBg: "#56DA9F",
-			badgeColor: "#051020",
-			text: "Bangun relasi dengan pengurus IEEE SB IPB",
+			id: 'card-05',
+			num: '05',
+			title: 'Experience a Smart City Simulation',
+			badgeBg: '#56DA9F',
+			badgeColor: '#051020',
+			text: 'Integrasikan prototipe IoT ke dalam maket miniatur kota 3D dan saksikan bagaimana sistem yang kamu bangun dapat berperan dalam simulasi Smart Disaster-Resilient City.',
 		},
 	],
-	// Column 3 (Right - lags most)
 	[
 		{
-			id: "card-03",
-			num: "03",
-			badgeBg: "#4EA5FF",
-			badgeColor: "#051020",
-			text: "Dapatkan sertifikat elektronik",
-		},
-		{
-			id: "card-06",
-			num: "06",
-			badgeBg: "#FFD516",
-			badgeColor: "#051020",
-			text: "Peluang mengikuti program magang",
+			id: 'card-03',
+			num: '03',
+			title: 'Explore Smart Disaster Detection',
+			badgeBg: '#4EA5FF',
+			badgeColor: '#051020',
+			text: 'Kenali bagaimana sensor dan teknologi IoT dapat dimanfaatkan untuk mendeteksi kondisi lingkungan serta mendukung sistem peringatan dini bencana.',
 		},
 	],
 ];

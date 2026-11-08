@@ -9,49 +9,15 @@ interface Props {
 const { card } = Astro.props;
 ---
 
-<div class={styles.cardOuter} data-cursor-text="Temukan Manfaat ⚡">
-	<div
+<article class={styles.cardOuter} aria-labelledby={`${card.id}-title`} data-cursor-text="Temukan Manfaat ⚡">
+	<h3
 		class={styles.cardBadge}
-		style={`background-color: ${card.badgeBg};`}
-		title={`Manfaat ${card.num}`}
+		id={`${card.id}-title`}
+		style={`background-color: ${card.badgeBg}; color: ${card.badgeColor};`}
 	>
-		<svg
-			class={styles.badgeIcon}
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-			aria-hidden="true"
-		>
-			<!-- Yellow Helmet -->
-			<path
-				d="M5 11C5 7.13401 8.13401 4 12 4C15.866 4 19 7.13401 19 11H5Z"
-				fill="#FFD516"
-				stroke="#051020"
-				stroke-width="1.8"
-			/>
-			<rect
-				x="4"
-				y="10"
-				width="16"
-				height="2.5"
-				rx="1"
-				fill="#FFD516"
-				stroke="#051020"
-				stroke-width="1.8"
-			/>
-			<!-- Face -->
-			<path
-				d="M6 12.5H18V16.5C18 18.7091 16.2091 20.5 14 20.5H10C7.79086 20.5 6 18.7091 6 16.5V12.5Z"
-				fill="#FFFFFF"
-				stroke="#051020"
-				stroke-width="1.8"
-			/>
-			<!-- Visor / Sunglasses -->
-			<rect x="7.5" y="13.5" width="9" height="3" rx="0.8" fill="#051020" />
-		</svg>
-	</div>
-
+		{card.title}
+	</h3>
 	<div class={styles.cardInner}>
 		<p class={styles.cardText}>{card.text}</p>
 	</div>
-</div>
+</article>

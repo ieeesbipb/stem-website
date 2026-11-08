@@ -2,6 +2,8 @@
 import { whyJoinColumns } from '../../data/whyJoin';
 import WhyJoinCard from './WhyJoinCard.astro';
 import styles from './WhyJoin.module.css';
+
+const cards = whyJoinColumns.flat().sort((a, b) => Number(a.num) - Number(b.num));
 ---
 
 <section class={styles.whyJoinSection} id="why-join">
@@ -15,31 +17,15 @@ import styles from './WhyJoin.module.css';
 				<span class={styles.wordMask}><span class={styles.word} style="--i: 2">STEM</span></span>
 				<span class={styles.wordMask}><span class={styles.word} style="--i: 3">2026?</span></span>
 			</h2>
-			<p
-				class={styles.sectionSubtitle}
-				data-animate="float-up"
-				style="--delay: 0.28s; --float-y: 50px;"
-			>
-				Belajar, berkarya, dan bangun relasi bersama generasi inovator teknologi berikutnya.
-			</p>
 		</header>
 
-		<!-- 3 Columns Parallax Grid -->
+		<!-- Three cards above two centered cards; each retains its own parallax. -->
 		<div class={styles.columnsContainer} data-why-join-grid>
-			{
-				whyJoinColumns.map((columnCards, colIdx) => (
-					<div
-						class={styles.column}
-						data-column-index={colIdx}
-					>
-						{columnCards.map((card) => (
-							<div class={styles.cardItem}>
-								<WhyJoinCard card={card} />
-							</div>
-						))}
-					</div>
-				))
-			}
+			{cards.map((card, index) => (
+				<div class={styles.cardItem} data-benefit-index={index}>
+					<WhyJoinCard card={card} />
+				</div>
+			))}
 		</div>
 	</div>
 </section>

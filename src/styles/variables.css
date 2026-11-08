@@ -3,3 +3,8 @@
 @media (max-width: 768px) {
   :root { --site-gutter: clamp(18px, 5vw, 32px); }
 }
+
+:root { --section-title-size: clamp(3rem, 6vw, 5.2rem); }
+@media (max-width: 768px) {
+  :root { --section-title-size: clamp(32px, 7vw, 48px); }
+}
