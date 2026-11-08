@@ -2,6 +2,7 @@ const examples = [
   { name: 'Abiyyu Dafa', motivation: 'Aku mau belajar teknologi penanganan bencana!' },
   { name: 'Rafid Harsyah', motivation: 'Lagi mau belajar IoT sihh' },
   { name: 'Abang Gilang Hilang', motivation: 'Pengen tau tentang IEEE IPB :D' },
+  { name: 'Naufal mantap keren', motivation: 'Mau ketemu speakernya yang keren bangett' },
 ];
 
 export function initRegistrationPreview(): void {

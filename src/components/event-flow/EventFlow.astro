@@ -4,7 +4,7 @@ const cards = [
     accentBg: '#ffd60f',
     iconColor: '#01101f',
     title: 'Seminar',
-    img: '/images/event-flow/seminar-mascot.PNG',
+    img: '/images/event-flow/seminar-mascot',
     imgAlt: 'Maskot STEM duduk di meja di depan layar presentasi',
     description:
       'Pemaparan konsep dasar IoT dan mitigasi bencana, dilengkapi Pre-Test dan Post-Test supaya peserta dapat memahami penggunaan teknologi dalam penanganan bencana.',
@@ -13,7 +13,7 @@ const cards = [
     accentBg: '#e6ccff',
     iconColor: '#01101f',
     title: "Hand's on Workshop",
-    img: '/images/event-flow/workshop-mascot.PNG',
+    img: '/images/event-flow/workshop-mascot',
     imgAlt: 'Maskot STEM mengerjakan perangkat di meja workshop bersama peserta',
     description:
       'Peserta melakukan praktik langsung tentang perakitan sirkuit sensor IoT dan flashing firmware dengan rasio pendampingan 1 Mentor Khusus IEEE per 10 peserta.',
@@ -22,7 +22,7 @@ const cards = [
     accentBg: '#ff6b00',
     iconColor: '#ffffff',
     title: 'City Integration & Awarding',
-    img: '/images/event-flow/city-integration-mascot.PNG',
+    img: '/images/event-flow/city-integration-mascot',
     imgAlt: 'Maskot STEM berdiri di samping podium',
     description:
       'Integrasi prototype ke maket miniatur kota 3D, simulasi Command Center secara real-time, dan awarding apresiasi penanya dan kelompok workshop terbaik.',
@@ -59,7 +59,9 @@ const cards = [
             <!-- Mascot image panel -->
             <div class="ef-illustration">
               <img
-                src={card.img}
+                src={`${card.img}-1280.webp`}
+                srcset={`${card.img}-640.webp 640w, ${card.img}-1280.webp 1280w`}
+                sizes="(max-width: 860px) calc(100vw - 40px), 460px"
                 alt={card.imgAlt}
                 loading="lazy"
                 class="ef-mascot"
